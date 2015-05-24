@@ -1,24 +1,22 @@
 package com.diskoverorta.utils;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class ConfigurationUtils {
+public class ConfigurationUtils {	
+	
 	public static String getNLPPackageChoice(){
 		Properties prop = new Properties();
 		InputStream input = null;
 		String value = null;
-		try {			 
-			input = new FileInputStream("config.properties");	 
-			// load a properties file
-			prop.load(input);	 
-			// get the property value and print it out
+		try {
+	        input = ConfigurationUtils.class.getClassLoader().getResourceAsStream("config.properties");						
+			prop.load(input);
 			value= prop.getProperty("NLPPackageChoice");
-		} catch (IOException ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();			
-		} finally {
+		}finally {
 			if (input != null) {
 				try {
 					input.close();
@@ -27,7 +25,6 @@ public class ConfigurationUtils {
 				}
 			}			
 		}
-		return value;
-		 
+		return value;		 
 	}
 }

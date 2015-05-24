@@ -25,7 +25,7 @@ class OpenNLP {
 	public List<String> splitSentencesINDocument(String document){
 		List<String> sentenceList = new ArrayList<String>();
 		try{
-			InputStream is = new FileInputStream("opennlpmodel/en-sent.bin");
+			InputStream is = getClass().getClassLoader().getResourceAsStream("opennlpmodel/en-sent.bin");
 			SentenceModel model = new SentenceModel(is);
 			SentenceDetectorME sdetector = new SentenceDetectorME(model);
 			
@@ -68,7 +68,7 @@ class OpenNLP {
 		
 		String [] tokens=null;
 		try{
-			InputStream is = new FileInputStream("opennlpmodel/en-token.bin");
+			InputStream is = getClass().getClassLoader().getResourceAsStream("opennlpmodel/en-token.bin");
 			TokenizerModel model = new TokenizerModel(is);
 			Tokenizer tokenizer = new TokenizerME(model);
 			tokens = tokenizer.tokenize(sentence);	
@@ -86,7 +86,7 @@ class OpenNLP {
 		
 		List<String> entityList = new ArrayList<String>();
 		try{
-			InputStream is = new FileInputStream(modelFile);
+			InputStream is = getClass().getClassLoader().getResourceAsStream(modelFile);
 			TokenNameFinderModel model = new TokenNameFinderModel(is);
 			is.close();
 			NameFinderME nameFinder = new NameFinderME(model);	

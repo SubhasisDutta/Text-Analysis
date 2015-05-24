@@ -1,27 +1,19 @@
 package com.diskoverorta.osdep;
 
-import edu.stanford.nlp.dcoref.CorefChain;
-import edu.stanford.nlp.dcoref.CorefCoreAnnotations;
 import edu.stanford.nlp.ie.AbstractSequenceClassifier;
 import edu.stanford.nlp.ie.crf.CRFClassifier;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.HasWord;
-import edu.stanford.nlp.pipeline.Annotation;
+
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.process.DocumentPreprocessor;
-import edu.stanford.nlp.semgraph.SemanticGraph;
-import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
-import edu.stanford.nlp.trees.Tree;
-import edu.stanford.nlp.trees.TreeCoreAnnotations;
-import edu.stanford.nlp.util.CoreMap;
+
 
 import java.io.Reader;
 import java.io.StringReader;
-import java.net.URL;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 /**
  * Created by praveen on 15/10/14.
@@ -174,22 +166,6 @@ class StanfordNLP
             }
         }
         return entityList;
-    } 
+    }   
     
-    public static void main(String args[]) {
-        String sample2 = "Investigation into the Saradha chit fund scam has so far not revealed any terror link with Bangladesh, the Centre said today, days after the BJP had alleged such a connection.\n" +
-                "\n" +
-                "â€œThe investigation has so far not revealed any such transaction where money was routed to Bangladesh to fund terrorist activities,â€� Union Minister of State for Personnel Jitendra Singh told the Lok Sabha in a written response.\n" +
-                "\n" +
-                "BJP chief Amit Shah had alleged that Saradha chit fund money had been used in the October 2, 2014 Bardhaman blast, which is being probed for link with the Jamaat-ul-Mujahideen Bangladesh (JMB) terror outfit.\n" +
-                "\n" +
-                "â€œSaradha chit fund money was used in the Burdwan (Bardhaman) blast. The NIA is not being allowed to probe the blast properly. Hurdles are being created. It is being done in order to save TMC leaders who are involved in the blast,â€� Mr. Shah had said, attacking the Trinamool Congress, at a BJP rally in Kolkata.\n" +
-                "\n" +
-                "The Union Minister was asked whether the government has sought details of the probe into the Saradha chit fund scam after reports indicated that a part of the money was routed to Bangladesh to fund terror activities. Mr. Singh replied that government had not sought details of the probe.\n" +
-                "\n" +
-                "To another question on whether the Saradha chief has admitted that he paid large sums to several people to influence the case in his favour, the Minister said, â€œThe matter is under investigation.â€�";
-//        StanfordNLP obj = new StanfordNLP();
-//        System.out.println(obj.splitSentencesINDocument(sample2));
-
-    }
 }
