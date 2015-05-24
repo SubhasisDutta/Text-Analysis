@@ -1,3 +1,6 @@
 .metadata/
 RemoteSystemsTempFiles/
 Servers/
+TextAnalyzer/result_output.txt
+TextAnalyzer/sample_tweets.txt
+TextAnalyzer/sample_tweetsTest1.txt
