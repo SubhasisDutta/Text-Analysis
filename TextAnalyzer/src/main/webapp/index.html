@@ -8,7 +8,7 @@
 
     <title>Diskoveror Text Analytics</title>
 
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-cosmo.css">    
     <link rel="stylesheet" href="/css/offcanvas.css">
     <link rel="stylesheet" href="/css/main.css">
@@ -19,21 +19,14 @@
     <meta property="og:image" content="/img/CloudPlatform_logo.png">
     <meta property="og:site_name" content="Diskoveror Text Analytics">
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
-    <script>
-        /**
-         * Initializes the Google API JavaScript client. Bootstrap the angular module after loading the Google libraries
-         * so that Google JavaScript library ready in the angular modules.
-         */
-        function init() {
-            gapi.client.load('conference', 'v1', null, '//' + window.location.host + '/_ah/api');
-            gapi.client.load('oauth2', 'v2', function () {
-                angular.bootstrap(document, ['discoveorApp']);
-            });
+    <script src="/js/lib/angular.js"></script>
+    <script src="/js/lib/angular-route.js"></script>
+    <script>        
+        function init() {           
+            angular.bootstrap(document, ['discoveorApp']);
         };
     </script>
-    <script src="//apis.google.com/js/client:plusone.js?onload=init"></script>
+    <script src="/js/lib/client_plusone.js?onload=init"></script>
 </head>
 
 <!-- Restore the credential from cookie if stored by calling initSignInButton() -->
@@ -52,8 +45,10 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li ng-class="{ active: isActive('/conference')}" ng-click="collapseNavbar()"><a href="#/conference">Demo</a></li>
-                <li ng-class="{ active: isActive('/conference/create')}" ng-click="collapseNavbar()"><a href="#/conference/create" >API Documentation</a></li>
+                <li ng-class="{ active: isActive('/findentity')}" ng-click="collapseNavbar()"><a href="#/findentity">Entity Demo</a></li>
+                <li ng-class="{ active: isActive('/comparenlp')}" ng-click="collapseNavbar()"><a href="#/comparenlp">Compare Demo</a></li>
+                <li ng-class="{ active: isActive('/findcategory')}" ng-click="collapseNavbar()"><a href="#/findcategory">Category Demo</a></li>
+                <li ng-class="{ active: isActive('/serendionlpdocs')}" ng-click="collapseNavbar()"><a href="#/serendionlpdocs" >API Documentation</a></li>
                 
                 <li class="nav-divider"></li>
             </ul>  
@@ -78,11 +73,11 @@
     <ng-view></ng-view>
 </div>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<script src="/js/app.js"></script>
-<script src="/js/controllers.js"></script>
+<script src="/js/lib/ui-bootstrap-tpls.js"></script>
+<script src="/js/lib/jquery.min.js"></script>
+<script src="/js/lib/bootstrap.min.js"></script>
+<script src="/js/demoapp.js"></script>
+<script src="/js/democontrollers.js"></script>
 
 <!-- Put the signInButton to invoke the gapi.signin.render to restore the credential if stored in cookie. -->
 <span id="signInButton" style="display: none" disabled="true"></span>
