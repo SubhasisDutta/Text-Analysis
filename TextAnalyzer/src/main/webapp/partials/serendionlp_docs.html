@@ -1,69 +1,46 @@
-<div class="intro-header">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="intro-message">
-                <h1>Welcome to Diskoveror Text Analytics</h1>
-                <h3>We let you convert unstructured content to structured information</h3>                            
-            </div>
-        </div>
-    </div>
-</div>
-<div class="section-a">
-    <div class="row">
-        <div class="col-lg-5 col-sm-6">
-            <hr>
-            <div class="clearfix"></div>
-            <h2>Discover Entities</h2>
-            <p class="lead">Find Person, Organization, Location, Currency, Percent, Date and Time.</p>
-            <a href="#/findentity" class="btn btn-default btn-lg">Go to Demo</a>
-        </div>
-        <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-            <img class="img-responsive" src="/img/business2.jpg" alt="">
-        </div>
-    </div>
-</div>
-
-<div class="section-a">
-    <div class="row">
-        <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-            <hr class="section-heading-spacer">
-            <div class="clearfix"></div>
-            <h2 class="section-heading">Compare Extraction</h2>
-            <p class="lead">Compare the entity extraction using StanfordNLP and OpenNLP.</p>
-            <a href="#/comparenlp" class="btn btn-default btn-lg">Go to Demo</a>
-        </div>
-        <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-            <img class="img-responsive" src="/img/business3.jpg" alt="">
-        </div>
-    </div>
-</div>
-
-<div class="section-a">
-    <div class="row">
-        <div class="col-lg-5 col-sm-6">
-            <hr>
-            <div class="clearfix"></div>
-            <h2 class="section-heading">Classify Text</h2>
-            <p class="lead">Find categories that a text or document can belong to.</p>
-            <a href="#/findcategory" class="btn btn-default btn-lg">Go to Demo</a>
-        </div>
-        <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-            <img class="img-responsive" src="/img/business3.jpg" alt="">
-        </div>
-    </div>
-</div>
-
-<div class="section-a">
-    <div class="row">
-        <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-            <hr class="section-heading-spacer">
-            <div class="clearfix"></div>
-            <h2 class="section-heading">SerendioNLP API</h2>
-            <p class="lead">View SerendioNLP API documentation.</p>
-            <a href="#/serendionlpdocs" class="btn btn-default btn-lg">Go to Docs</a>
-        </div>
-        <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-            <img class="img-responsive" src="/img/business1.jpg" alt="">
-        </div>
-    </div>
-</div>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#999;border:none;}
+.tg td{font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;}
+.tg th{font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;}
+.tg .tg-vn4c{background-color:#D2E4FC}
+.tg .tg-093g{font-weight:bold;font-style:italic;text-align:center}
+.tg .tg-xdyu{font-weight:bold;font-style:italic}
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 727px">
+<colgroup>
+<col style="width: 201px">
+<col style="width: 159px">
+<col style="width: 75px">
+<col style="width: 292px">
+</colgroup>
+  <tr>
+    <th class="tg-093g">URI                                               </th>
+    <th class="tg-xdyu">Parameters</th>
+    <th class="tg-xdyu">Method</th>
+    <th class="tg-093g">Description                                       </th>
+  </tr>
+  <tr>
+    <td class="tg-vn4c">/getEntity<br>/getPerson<br>/getOrganization<br>/getLocation<br>/getCurrency<br>/getPercent<br>/getDate<br>/getTime</td>
+    <td class="tg-vn4c">nlp=stanfordnlp or opennlp (default is Stanford NLP)<br>text= {string text to be analysed}<br>file = text file </td>
+    <td class="tg-vn4c">GET</td>
+    <td class="tg-vn4c">This API will identify the entities present in the text and return a JSON or XML response as requested.</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">/getallcategory<br>/getdetailedcategory<br>/getconsisecategory</td>
+    <td class="tg-031e">nlp=stanfordnlp or opennlp (default is Stanford NLP)<br>text= {string text to be analysed}<br>file = text file </td>
+    <td class="tg-031e">GET</td>
+    <td class="tg-031e">This API will identify the category a text can belong and list out a detailed list of attributes the text has and can be used for various analysis. The response is JSON or XML.</td>
+  </tr>
+  <tr>
+    <td class="tg-vn4c">/getalldetails</td>
+    <td class="tg-vn4c">nlp=stanfordnlp or opennlp (default is Stanford NLP)<br>text= {string text to be analysed}<br>file = text file </td>
+    <td class="tg-vn4c">GET</td>
+    <td class="tg-vn4c">This returns both entity and category details as JSON and XML as requested.</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">/getallnlp</td>
+    <td class="tg-031e">text= {string text to be analysed}<br>file = text file</td>
+    <td class="tg-031e">GET</td>
+    <td class="tg-031e">This returns all entity detected by StanfordNLP and OpenNLP package. The result can be used for comparison or further optimization by considering the union or common of the two results. </td>
+  </tr>  
+</table>
