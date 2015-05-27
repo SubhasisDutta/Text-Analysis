@@ -17,15 +17,15 @@ var app = angular.module('discoveorApp',
         function ($routeProvider) {
             $routeProvider.
                 when('/findentity', {
-                    templateUrl: '/partials/profile.html',
+                    templateUrl: '/partials/find_entity.html',
                     controller: 'MyProfileCtrl'
                 }).
                 when('/comparenlp', {
-                    templateUrl: '/partials/create_conferences.html',
+                    templateUrl: '/partials/compare_nlp.html',
                     controller: 'CreateConferenceCtrl'
                 }).
                 when('/findcategory', {
-                    templateUrl: '/partials/conference_detail.html',
+                    templateUrl: '/partials/find_category.html',
                     controller: 'ConferenceDetailCtrl'
                 }).
                 when('/serendionlpdocs', {
