@@ -15,4 +15,8 @@ public class CurrencyEntity implements BaseEntity
         SerendioNLP nlp = new SerendioNLP();        
         return nlp.getEntities(sentence,"MONEY",7);
     }    
+    public List<String> getEntities(String sentence,SerendioNLP nlp)
+    {            
+        return nlp.getEntities(sentence,"MONEY",7);
+    } 
 }

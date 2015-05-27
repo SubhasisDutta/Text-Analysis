@@ -2,10 +2,12 @@ package com.diskoverorta.vo;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.xml.bind.annotation.XmlRootElement;
 /**
  * Created by praveen on 17/10/14.
  */
+
+@XmlRootElement
 public class EntityObject
 {
     public List<String> currency = null;

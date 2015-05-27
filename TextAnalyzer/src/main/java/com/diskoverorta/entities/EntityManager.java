@@ -22,7 +22,15 @@ public class EntityManager
         {
         	serendioNlp = new SerendioNLP();
         }
-    }    
+    } 
+    
+    public EntityManager(String packeagChoice)
+    {
+        if(serendioNlp==null)
+        {
+        	serendioNlp = new SerendioNLP(packeagChoice);
+        }
+    }
 
     public String getALLDocumentEntitiesINJSON(String sDoc)
     {
@@ -46,13 +54,13 @@ public class EntityManager
     private EntityObject getALLEntitiesForSentence(String sSentence)
     {
         EntityObject entities = new EntityObject();
-        entities.person = (new PersonEntity()).getEntities(sSentence);
-        entities.organization = (new OrganizationEntity()).getEntities(sSentence);
-        entities.location = (new LocationEntity()).getEntities(sSentence);
-        entities.date = (new DateEntity()).getEntities(sSentence);
-        entities.time = (new TimeEntity()).getEntities(sSentence);
-        entities.currency = (new CurrencyEntity()).getEntities(sSentence);
-        entities.percent = (new PercentEntity()).getEntities(sSentence);
+        entities.person = (new PersonEntity()).getEntities(sSentence,serendioNlp);
+        entities.organization = (new OrganizationEntity()).getEntities(sSentence,serendioNlp);
+        entities.location = (new LocationEntity()).getEntities(sSentence,serendioNlp);
+        entities.date = (new DateEntity()).getEntities(sSentence,serendioNlp);
+        entities.time = (new TimeEntity()).getEntities(sSentence,serendioNlp);
+        entities.currency = (new CurrencyEntity()).getEntities(sSentence,serendioNlp);
+        entities.percent = (new PercentEntity()).getEntities(sSentence,serendioNlp);
 
         return entities;
     }

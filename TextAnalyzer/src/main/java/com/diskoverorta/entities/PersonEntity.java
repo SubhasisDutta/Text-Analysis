@@ -14,5 +14,10 @@ public class PersonEntity implements BaseEntity
     {
     	SerendioNLP nlp = new SerendioNLP();        
         return nlp.getEntities(sentence,"PERSON",3,3);
-    }    
+    }  
+    
+    public List<String> getEntities(String sentence,SerendioNLP nlp)
+    {    	  
+        return nlp.getEntities(sentence,"PERSON",3,3);
+    }
 }

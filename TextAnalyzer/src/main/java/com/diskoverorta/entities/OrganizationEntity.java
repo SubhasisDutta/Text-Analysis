@@ -14,4 +14,9 @@ public class OrganizationEntity implements BaseEntity
     	SerendioNLP nlp = new SerendioNLP();        
         return nlp.getEntities(sentence,"ORGANIZATION",3);    	
     }
+    
+    public List<String> getEntities(String sentence,SerendioNLP nlp)
+    {    	     
+        return nlp.getEntities(sentence,"ORGANIZATION",3);    	
+    }
 }

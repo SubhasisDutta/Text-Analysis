@@ -20,11 +20,14 @@ public class SerendioNLP {
 	static StanfordNLP stanfordNlp = null;
 	static OpenNLP openNlp = null;
 	
+	public static final String STANFORD_NLP="STANFORD_NLP";
+	public static final String OPEN_NLP="OPEN_NLP";
+	
 	public SerendioNLP(){
 		nlpPackage=ConfigurationUtils.getNLPPackageChoice();
-		if(nlpPackage.trim().equalsIgnoreCase("STANFORD_NLP")){
+		if(nlpPackage.trim().equalsIgnoreCase(SerendioNLP.STANFORD_NLP)){
 			stanfordNlp= new StanfordNLP();
-		}else if(nlpPackage.trim().equalsIgnoreCase("OPEN_NLP")){
+		}else if(nlpPackage.trim().equalsIgnoreCase(SerendioNLP.OPEN_NLP)){
 			openNlp = new OpenNLP();
 		}else{
 			// Do nothing
@@ -32,9 +35,9 @@ public class SerendioNLP {
 	}
 	public SerendioNLP(String packeagChoice){
 		nlpPackage=packeagChoice;
-		if(nlpPackage.trim().equalsIgnoreCase("STANFORD_NLP")){
+		if(nlpPackage.trim().equalsIgnoreCase(SerendioNLP.STANFORD_NLP)){
 			stanfordNlp= new StanfordNLP();
-		}else if(nlpPackage.trim().equalsIgnoreCase("OPEN_NLP")){
+		}else if(nlpPackage.trim().equalsIgnoreCase(SerendioNLP.OPEN_NLP)){
 			openNlp = new OpenNLP();
 		}else{
 			// Do nothing
@@ -42,18 +45,18 @@ public class SerendioNLP {
 	}
 	
 	public List<String> getEntities(String text,String entity,int typeNERT){
-		if(nlpPackage.trim().equalsIgnoreCase("STANFORD_NLP")){			
+		if(nlpPackage.trim().equalsIgnoreCase(SerendioNLP.STANFORD_NLP)){			
 			return stanfordNlp.getEntities(text, entity,typeNERT);
-		}else if(nlpPackage.trim().equalsIgnoreCase("OPEN_NLP")){
+		}else if(nlpPackage.trim().equalsIgnoreCase(SerendioNLP.OPEN_NLP)){
 			return openNlp.getEntities(text, entity);
 		}else{
 			return null;
 		}
 	}
 	public List<String> getEntities(String text,String entity,int typeNERT,int cnt){
-		if(nlpPackage.trim().equalsIgnoreCase("STANFORD_NLP")){			
+		if(nlpPackage.trim().equalsIgnoreCase(SerendioNLP.STANFORD_NLP)){			
 			return stanfordNlp.getEntities(text, entity,typeNERT,3);
-		}else if(nlpPackage.trim().equalsIgnoreCase("OPEN_NLP")){
+		}else if(nlpPackage.trim().equalsIgnoreCase(SerendioNLP.OPEN_NLP)){
 			return openNlp.getEntities(text, entity);
 		}else{
 			return null;
@@ -61,9 +64,9 @@ public class SerendioNLP {
 	}
 	
 	public List<String> splitSentencesINDocument(String document){
-		if(nlpPackage.trim().equalsIgnoreCase("STANFORD_NLP")){			
+		if(nlpPackage.trim().equalsIgnoreCase(SerendioNLP.STANFORD_NLP)){			
 			return stanfordNlp.splitSentencesINDocument(document);
-		}else if(nlpPackage.trim().equalsIgnoreCase("OPEN_NLP")){
+		}else if(nlpPackage.trim().equalsIgnoreCase(SerendioNLP.OPEN_NLP)){
 			return openNlp.splitSentencesINDocument(document);
 		}else{
 			return null;
@@ -71,7 +74,7 @@ public class SerendioNLP {
 	}
 	
 	public Map<String, Set<String>> getMentionsForEntities(Set<String> entities,String text){
-		if(nlpPackage.trim().equalsIgnoreCase("STANFORD_NLP")){			
+		if(nlpPackage.trim().equalsIgnoreCase(SerendioNLP.STANFORD_NLP)){			
 			// create an empty Annotation just with the given text
 	        Annotation document = new Annotation(text);
 	        // run all Annotators on this text
@@ -105,7 +108,7 @@ public class SerendioNLP {
 	            }
 	        }
 	        return mp;
-		}else if(nlpPackage.trim().equalsIgnoreCase("OPEN_NLP")){
+		}else if(nlpPackage.trim().equalsIgnoreCase(SerendioNLP.OPEN_NLP)){
 			return null; // TODO
 		}else{
 			return null;

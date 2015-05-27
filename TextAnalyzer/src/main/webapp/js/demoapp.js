@@ -17,8 +17,8 @@ var app = angular.module('discoveorApp',
         function ($routeProvider) {
             $routeProvider.
                 when('/findentity', {
-                    templateUrl: '/partials/find_entity.html',
-                    controller: 'FindEntityCtrl'
+                    templateUrl: '/partials/find_entity.html'//,
+                    //controller: 'FindEntityCtrl'
                 }).
                 when('/comparenlp', {
                     templateUrl: '/partials/compare_nlp.html',

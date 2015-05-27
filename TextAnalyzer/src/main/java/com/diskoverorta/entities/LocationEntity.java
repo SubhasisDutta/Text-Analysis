@@ -13,5 +13,9 @@ public class LocationEntity implements BaseEntity
     {
     	SerendioNLP nlp = new SerendioNLP();        
         return nlp.getEntities(sentence,"LOCATION",3);    	
-    }    
+    }   
+    public List<String> getEntities(String sentence,SerendioNLP nlp)
+    {    	    
+        return nlp.getEntities(sentence,"LOCATION",3);    	
+    } 
 }

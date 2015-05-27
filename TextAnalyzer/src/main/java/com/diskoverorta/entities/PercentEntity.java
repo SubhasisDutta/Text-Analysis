@@ -14,4 +14,8 @@ public class PercentEntity implements BaseEntity
     	SerendioNLP nlp = new SerendioNLP();        
         return nlp.getEntities(sentence,"PERCENT",7);  
     }    
+    public List<String> getEntities(String sentence,SerendioNLP nlp)
+    {    	     
+        return nlp.getEntities(sentence,"PERCENT",7);  
+    } 
 }
