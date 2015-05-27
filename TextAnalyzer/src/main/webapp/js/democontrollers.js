@@ -19,12 +19,12 @@ demoApp.controllers = angular.module('demoAppControllers', ['ui.bootstrap']);
 
 /**
  * @ngdoc controller
- * @name MyProfileCtrl
+ * @name FindEntityCtrl
  *
  * @description
  * A controller used for the My Profile page.
  */
-demoApp.controllers.controller('MyProfileCtrl',
+demoApp.controllers.controller('FindEntityCtrl',
     function ($scope, $log, HTTP_ERRORS) {
         $scope.submitted = false;
         $scope.loading = false;
@@ -118,12 +118,12 @@ demoApp.controllers.controller('MyProfileCtrl',
 
 /**
  * @ngdoc controller
- * @name CreateConferenceCtrl
+ * @name CompareNlpCtrl
  *
  * @description
  * A controller used for the Create conferences page.
  */
-demoApp.controllers.controller('CreateConferenceCtrl',
+demoApp.controllers.controller('CompareNlpCtrl',
     function ($scope, $log, HTTP_ERRORS) {
 
         /**
@@ -235,12 +235,12 @@ demoApp.controllers.controller('CreateConferenceCtrl',
 
 /**
  * @ngdoc controller
- * @name ConferenceDetailCtrl
+ * @name FindCategoryCtrl
  *
  * @description
  * A controller used for the conference detail page.
  */
-demoApp.controllers.controller('ConferenceDetailCtrl', function ($scope, $log, $routeParams, HTTP_ERRORS) {
+demoApp.controllers.controller('FindCategoryCtrl', function ($scope, $log, $routeParams, HTTP_ERRORS) {
     $scope.conference = {};
 
     $scope.isUserAttending = false;
