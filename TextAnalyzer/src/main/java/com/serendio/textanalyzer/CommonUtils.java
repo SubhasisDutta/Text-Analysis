@@ -6,6 +6,8 @@ import java.io.StringWriter;
 
 import org.apache.commons.io.IOUtils;
 
+import com.diskoverorta.osdep.SerendioNLP;
+
 public class CommonUtils {
 	
 	public static String convetToString(InputStream stream)throws IOException{
@@ -15,5 +17,12 @@ public class CommonUtils {
 		StringWriter writer = new StringWriter();
 		IOUtils.copy(inputStream, writer, encoding);
 		return writer.toString();		
+	}
+	
+	public static String processNlpType(String nlpType){
+		if(nlpType.equals("opennlp")){
+			return SerendioNLP.OPEN_NLP;
+		}
+		return SerendioNLP.STANFORD_NLP;		
 	}
 }

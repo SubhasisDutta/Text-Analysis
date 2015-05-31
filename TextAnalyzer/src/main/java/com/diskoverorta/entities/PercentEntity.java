@@ -1,6 +1,7 @@
 package com.diskoverorta.entities;
 
 import com.diskoverorta.osdep.SerendioNLP;
+
 import java.util.List;
 
 /**
@@ -14,6 +15,11 @@ public class PercentEntity implements BaseEntity
     	SerendioNLP nlp = new SerendioNLP();        
         return nlp.getEntities(sentence,"PERCENT",7);  
     }    
+    public List<String> getEntities(String sentence,String packageChoice)
+    {
+    	SerendioNLP nlp = new SerendioNLP(packageChoice);        
+        return nlp.getEntities(sentence,"PERCENT",7);  
+    }
     public List<String> getEntities(String sentence,SerendioNLP nlp)
     {    	     
         return nlp.getEntities(sentence,"PERCENT",7);  

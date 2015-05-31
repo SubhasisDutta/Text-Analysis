@@ -20,13 +20,13 @@
     <th class="tg-093g">Description                                       </th>
   </tr>
   <tr>
-    <td class="tg-vn4c">/api/entity/all<br>/getPerson<br>/getOrganization<br>/getLocation<br>/getCurrency<br>/getPercent<br>/getDate<br>/getTime</td>
+    <td class="tg-vn4c">/api/entity/all<br>/api/entity/person<br>/api/entity/organization<br>/api/entity/location<br>/api/entity/currency<br>/api/entity/percent<br>/api/entity/date<br>/api/entity/time</td>
     <td class="tg-vn4c">nlp=stanfordnlp or opennlp (default is Stanford NLP)<br>text= {string text to be analysed}<br>file = text file </td>
     <td class="tg-vn4c">GET</td>
     <td class="tg-vn4c">This API will identify the entities present in the text and return a JSON or XML response as requested.</td>
   </tr>
   <tr>
-    <td class="tg-031e">/getallcategory<br>/getdetailedcategory<br>/getconsisecategory</td>
+    <td class="tg-031e">/api/category/all<br>/api/category/dbpedia<br>/api/category/consise</td>
     <td class="tg-031e">nlp=stanfordnlp or opennlp (default is Stanford NLP)<br>text= {string text to be analysed}<br>file = text file </td>
     <td class="tg-031e">GET</td>
     <td class="tg-031e">This API will identify the category a text can belong and list out a detailed list of attributes the text has and can be used for various analysis. The response is JSON or XML.</td>

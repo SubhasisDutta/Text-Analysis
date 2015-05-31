@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class TweetCategoryModel {
 	private Set<String> categories;
 	private Map<String,List<String>> dbPediaCategory;
