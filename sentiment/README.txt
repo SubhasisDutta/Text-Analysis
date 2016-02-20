@@ -1,0 +1,1 @@
+The sentiment Extraction module
