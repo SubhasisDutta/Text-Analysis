@@ -54,6 +54,7 @@ public class EntityManager
     private EntityObject getALLEntitiesForSentence(String sSentence)
     {
         EntityObject entities = new EntityObject();
+        entities.sentence = sSentence;
         entities.person = (new PersonEntity()).getEntities(sSentence,serendioNlp);
         entities.organization = (new OrganizationEntity()).getEntities(sSentence,serendioNlp);
         entities.location = (new LocationEntity()).getEntities(sSentence,serendioNlp);

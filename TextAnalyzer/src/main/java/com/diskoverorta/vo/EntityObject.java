@@ -17,6 +17,7 @@ public class EntityObject
     public List<String> percent = null;
     public List<String> person = null;
     public List<String> time = null;
+    public String sentence = null;
 
     public EntityObject()
     {
