@@ -4,3 +4,5 @@ Servers/
 TextAnalyzer/result_output.txt
 TextAnalyzer/sample_tweets.txt
 TextAnalyzer/sample_tweetsTest1.txt
+sentiment-topic-keyword-server/.idea/
+*.pyc

@@ -63,11 +63,11 @@ DisKoveror supports Java APIs and a RESTful interface.
 The requirements.txt file specifies the software packages along with their versions to be installed. Execute the
 below command to install all python related dependencies for the Sentiment and Topics.
 
->     /diskoveror-ta/src/main/python$ sudo pip install -r requirements.txt
+>     /text-analysis/sentiment-topic-keyword-server/python$ sudo pip install -r requirements.txt
 
 Start the thrift servers for Topics and Sentiments 
 
->     /diskoveror-ta/src/main/python$ python server.py
+>     /text-analysis/sentiment-topic-keyword-server/python$ python server.py
 
 ##### **Compiling DisKoveror TA Engine**
 To package it in a single executable jar for distribution (.jar file), the following command has to be run from the command line.
@@ -75,8 +75,8 @@ To package it in a single executable jar for distribution (.jar file), the follo
 
 ##### **The diskoveror-ta package could be utilized by any of the below provided methods**
 
-* [JAVA API](https://github.com/serendio-labs/diskoveror-ta/wiki/JAVA-API)
-* [Command Line API](https://github.com/serendio-labs/diskoveror-ta/wiki/Command-Line-API)
-* [RESTful interface](https://github.com/serendio-labs/diskoveror-ta/wiki/REST-API)
+* [JAVA API](https://github.com/SubhasisDutta/text-analysis/wiki/JAVA-API)
+* [Command Line API](https://github.com/SubhasisDutta/text-analysis/wiki/Command-Line-API)
+* [RESTful interface](https://github.com/SubhasisDutta/text-analysis/wiki/REST-API)
 
 

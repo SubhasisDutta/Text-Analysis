@@ -1,1 +1,0 @@
-The basic UI APP that will serve and provide REST API
