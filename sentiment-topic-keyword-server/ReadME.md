@@ -11,3 +11,6 @@ To test if every thing is working
 You should get the  message from server.
 
 Also you can run the client.py to test.
+
+From Python Console type
+execfile("server.py");

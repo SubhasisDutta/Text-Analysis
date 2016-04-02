@@ -18,12 +18,12 @@ package com.diskoverorta.lifesciences;
 
 
 //import com.serendio.diskoverer.lifesciences.LSManager;
-/**
+/**Removing Lifesciences integration support currently
  Created by praveen on 27/11/14.
-
+*/
 public class LSInterface
 {
-    static LSManager lsMan = null;
+    /*static LSManager lsMan = null;
     static
     {
         lsMan = new LSManager();
@@ -37,7 +37,6 @@ public class LSInterface
     public static String getLSEntitiesinJSON(String doc)
     {
         return lsMan.extractLSEntitiesInJSON(doc);
-    }
+    }*/
 }
- Removing Lifesciences integration support currently
-*/
+ 

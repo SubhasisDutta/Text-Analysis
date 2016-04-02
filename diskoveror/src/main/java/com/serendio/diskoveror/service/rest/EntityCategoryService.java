@@ -1,4 +1,4 @@
-package com.serendio.textanalyzer;
+package com.serendio.diskoveror.service.rest;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import com.serendio.categotyfinder.TweetCategoryModel;
 import com.serendio.categotyfinder.TweetPaser;
 
 
-@Path("category")
+@Path("category_v1")
 public class EntityCategoryService {
 
 	@GET

@@ -1,4 +1,4 @@
-package com.serendio.textanalyzer;
+package com.serendio.diskoveror.service.rest;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.serendio.textanalyzer;
+package com.serendio.diskoveror.service.rest;
 
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
@@ -32,7 +32,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-@Path("entity")
+@Path("entity_v1")
 public class EntityService {
 
 	/*@GET
