@@ -6,3 +6,6 @@ TextAnalyzer/sample_tweets.txt
 TextAnalyzer/sample_tweetsTest1.txt
 sentiment-topic-keyword-server/.idea/
 *.pyc
+diskoveror/.classpath
+diskoveror/.project
+diskoveror/.settings/
