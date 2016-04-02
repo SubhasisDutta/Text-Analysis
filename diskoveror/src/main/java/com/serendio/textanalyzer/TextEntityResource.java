@@ -1,21 +1,16 @@
-package com.serendio.diskoveror.service.rest;
+package com.serendio.textanalyzer;
+
+import java.util.List;
 
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
-import org.glassfish.jersey.media.multipart.FormDataParam;
-
-import com.diskoverorta.entities.BaseEntity;
 import com.diskoverorta.entities.CurrencyEntity;
 import com.diskoverorta.entities.DateEntity;
 import com.diskoverorta.entities.EntityManager;
@@ -24,41 +19,10 @@ import com.diskoverorta.entities.OrganizationEntity;
 import com.diskoverorta.entities.PercentEntity;
 import com.diskoverorta.entities.PersonEntity;
 import com.diskoverorta.entities.TimeEntity;
-import com.diskoverorta.osdep.SerendioNLP;
 import com.diskoverorta.vo.EntityObject;
 
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-
-@Path("entity_v1")
-public class EntityService {
-
-	/*@GET
-	@Path("all")
-	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public Response getAll(@FormDataParam("file") InputStream uploadedInputStream,
-			@FormDataParam("file") FormDataContentDisposition fileDetail,
-			@DefaultValue("")@FormDataParam("text") String inputText){
-		String totalText="";
-		try{
-			if(uploadedInputStream!=null){
-				totalText=CommonUtils.convetToString(uploadedInputStream);
-			}
-			if(inputText!=null && inputText.length()>0){
-				totalText=inputText;
-			}			
-		}catch(IOException e1){
-			return Response.status(Status.BAD_REQUEST).build();
-		}		
-		EntityManager temp = new EntityManager(SerendioNLP.STANFORD_NLP);
-		List<EntityObject> result=temp.getALLEntitiesForDocument(totalText);
-		
-		return Response.ok().entity(new GenericEntity<List<EntityObject>>(result){}).build();
-	}*/
-	
+@Path("entity")
+public class TextEntityResource {
 	@GET
 	@Path("all")	
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -152,5 +116,4 @@ public class EntityService {
 		e.time=names;
 		return Response.ok().entity(e).build();
 	}
-	
 }
