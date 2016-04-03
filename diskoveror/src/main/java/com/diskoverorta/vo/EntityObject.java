@@ -31,6 +31,9 @@ public class EntityObject
     public List<String> percent = null;
     public List<String> person = null;
     public List<String> time = null;
+    public List<String> topics = null;
+    public List<String> keyWords = null;
+    public String sentimentScore = null;
     public String sentence = null;
 
     public EntityObject()
@@ -42,5 +45,8 @@ public class EntityObject
         percent = new ArrayList<String>();
         person = new ArrayList<String>();
         time = new ArrayList<String>();
+        topics = new ArrayList<String>();
+        keyWords = new ArrayList<String>();
+        sentimentScore = "0";
     }
 }

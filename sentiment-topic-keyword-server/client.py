@@ -43,7 +43,7 @@ blogs_news -> mainText< or first paragraph>, title, textType="blogs_news",lastPa
 
 try:
     # Make socket
-    transport = TSocket.TSocket('localhost', 9090)
+    transport = TSocket.TSocket('localhost', 19090)
     # Buffering is critical. Raw sockets are very slow
     transport = TTransport.TBufferedTransport(transport)
     # Wrap in a protocol
@@ -66,6 +66,8 @@ try:
            'member of the committee. The Chairperson will nominate one of its employees as the sixth member. ' \
            'The move comes in the wake of a severe breakdown of talks between the Centre and the Reserve Bank ' \
            'over amendments to the RBI Act, which Finance Minister Arun Jaitley had announced in his Budget speech.'
+
+    # text='Barak Obama is the president of America.'
     text1 = text
     text = text.encode("utf-8")
     obj = SentiRequestObject(text)

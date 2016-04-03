@@ -77,7 +77,7 @@ class PyInterfaceServer:
         return keywords 
          
 
-port = '9090'
+port = '19090'
 handler = PyInterfaceServer()
 processor = PyInterface.Processor(handler)
 transport = TSocket.TServerSocket(port=port)

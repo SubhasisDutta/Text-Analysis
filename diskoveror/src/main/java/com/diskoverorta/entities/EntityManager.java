@@ -18,9 +18,11 @@ package com.diskoverorta.entities;
 
 
 import com.diskoverorta.osdep.SerendioNLP;
+import com.diskoverorta.pyinterface.ThriftClient;
 import com.diskoverorta.vo.EntityObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,11 +34,17 @@ public class EntityManager
 {	
     //to do : Get all selected entities at runtime and process only them, Make use of array of baseentities
     static SerendioNLP serendioNlp = null;
+    static ThriftClient pyClient = null;
+    
     public EntityManager()
     {
         if(serendioNlp==null)
         {
         	serendioNlp = new SerendioNLP();
+        }
+        if(pyClient==null)
+        {
+            pyClient = new ThriftClient("localhost",19090);
         }
     } 
     
@@ -45,6 +53,10 @@ public class EntityManager
         if(serendioNlp==null)
         {
         	serendioNlp = new SerendioNLP(packeagChoice);
+        }
+        if(pyClient==null)
+        {
+            pyClient = new ThriftClient("localhost",19090);
         }
     }
 
@@ -78,6 +90,13 @@ public class EntityManager
         entities.time = (new TimeEntity()).getEntities(sSentence,serendioNlp);
         entities.currency = (new CurrencyEntity()).getEntities(sSentence,serendioNlp);
         entities.percent = (new PercentEntity()).getEntities(sSentence,serendioNlp);
+        
+        //For Seniment,topics and keywods
+        entities.sentimentScore = pyClient.getSentimentScore(sSentence);
+        entities.keyWords = pyClient.getKeywords(sSentence);
+        entities.topics = pyClient.getTopics(sSentence);
+        
+        
 
         return entities;
     }

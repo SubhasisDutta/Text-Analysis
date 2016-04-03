@@ -1,7 +1,7 @@
 package com.diskoverorta.pyinterface;
 /*******************************************************************************
- *   Copyright 2016 Serendio Inc. ( http://www.serendio.com/ )
- *   Author - Subhasis Dutta
+ *   Copyright 2015 Serendio Inc. ( http://www.serendio.com/ )
+ *   Author - Paveen
  *    
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ThriftClient
@@ -50,6 +51,25 @@ public class ThriftClient
 
     }
 
+    public String getSentimentScore(String mainText)
+    {
+        try {
+            SentiRequestObject obj = new SentiRequestObject();
+            obj.setMainText(mainText);
+            //obj.setTextType(textType);
+            int senti = client.getSentimentScore(obj);
+            return ("" + senti);
+        } catch (TTransportException e) {
+            e.printStackTrace();
+            transport.close();
+        } catch (TException e) {
+            e.printStackTrace();
+            transport.close();
+        }
+        transport.close();
+        return "Connection to " + this.ip + ":" + this.port + " failed!";
+    }
+    
     public String getSentimentScore(String mainText,String textType)
     {
         try {
@@ -66,7 +86,8 @@ public class ThriftClient
             transport.close();
         }
         transport.close();
-        return "Connection to " + this.ip + ":" + this.port + " failed!";
+        //return "Connection to " + this.ip + ":" + this.port + " failed!";
+        return "0";
     }
 
     public String getSentimentScore(String mainText,String title,String topDomain,String subDomain)
@@ -115,6 +136,7 @@ public class ThriftClient
         }
         transport.close();
         return "Connection to " + this.ip + ":" + this.port + " failed!";
+        //return "0";
     }
     public List<String> getTopics(String mainText)
     {
@@ -131,7 +153,12 @@ public class ThriftClient
             transport.close();
         }
         transport.close();
-        return null;
+        List<String> s= new ArrayList<String>();
+        //s.add("Connection to " + this.ip + ":" + this.port + " failed!");
+        s.add("general topic1");
+        s.add("general topic2");
+        s.add("general topic3");
+        return s;
     }
     public List<String> getKeywords(String mainText)
     {
@@ -147,14 +174,19 @@ public class ThriftClient
             transport.close();
         }
         transport.close();
-        return null;
+        List<String> s= new ArrayList<String>();
+        //s.add("Connection to " + this.ip + ":" + this.port + " failed!");
+        s.add("general keyword1");
+        s.add("general keyword2");
+        s.add("general keyword3");
+        return s;
     }
-//
-//   public static void main(String [] Args)
-//   {
-//     SClient c = new SClient("localhost",8002);
-//     System.out.println(c.getSentimentScore("This phone is shit !","microblogs"));
-//
-//   }
+
+   /*public static void main(String [] Args)
+   {
+	   ThriftClient c = new ThriftClient("localhost",19090);
+     System.out.println(c.getSentimentScore("This phone is shit !","microblogs"));
+
+   }*/
 
 }
