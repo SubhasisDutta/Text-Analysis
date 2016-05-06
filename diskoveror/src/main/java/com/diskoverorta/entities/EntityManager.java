@@ -72,10 +72,11 @@ public class EntityManager
     {
         List<EntityObject> allEntities = new ArrayList<EntityObject>();
         List<String> sentences = serendioNlp.splitSentencesINDocument(sDoc);
-        for(String temp : sentences)
+        /*for(String temp : sentences)
         {
             allEntities.add(getALLEntitiesForSentence(temp));
-        }
+        }*/
+        allEntities.add(getALLEntitiesForSentence(sDoc));
         return allEntities;
     }
 

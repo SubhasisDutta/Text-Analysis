@@ -18,19 +18,14 @@
     <meta property="og:description" content="Diskoveror Text Analytics is a demo app that identifies and clasifies unstructured content.">
     <meta property="og:image" content="/img/CloudPlatform_logo.png">
     <meta property="og:site_name" content="Diskoveror Text Analytics">
-
-    <script src="/js/lib/angular.js"></script>
-    <script src="/js/lib/angular-route.js"></script>
-    <script>        
-        function init() {           
-            angular.bootstrap(document, ['discoveorApp']);
-        };
-    </script>
-    <script src="/js/lib/client_plusone.js?onload=init"></script>
+	<script src="/js/lib/jquery.min.js"></script>
+<script src="/js/lib/bootstrap.min.js"></script>
+<script src="/js/lib/angular.js"></script>
+        
 </head>
 
 <!-- Restore the credential from cookie if stored by calling initSignInButton() -->
-<body ng-controller="RootCtrl" ng-init="initSignInButton()">
+<body>
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -45,23 +40,24 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li ng-class="{ active: isActive('/findentity')}" ng-click="collapseNavbar()"><a href="#/findentity">Entity Demo</a></li>
-                <li ng-class="{ active: isActive('/comparenlp')}" ng-click="collapseNavbar()"><a href="#/comparenlp">Compare Demo</a></li>
-                <li ng-class="{ active: isActive('/findcategory')}" ng-click="collapseNavbar()"><a href="#/findcategory">Category Demo</a></li>
-                <li ng-class="{ active: isActive('/serendionlpdocs')}" ng-click="collapseNavbar()"><a href="#/serendionlpdocs" >API Documentation</a></li>
+                <li ng-class="{ active: isActive('/findentity')}" ng-click="collapseNavbar()"><a href="#/demo">Demo</a></li>
+                <!-- <li ng-class="{ active: isActive('/comparenlp')}" ng-click="collapseNavbar()"><a href="#/comparenlp">Compare Demo</a></li>
+                <li ng-class="{ active: isActive('/findcategory')}" ng-click="collapseNavbar()"><a href="#/findcategory">Category Demo</a></li>  -->
+                <li ng-class="{ active: isActive('/serendionlpdocs')}" ng-click="collapseNavbar()"><a href="#/docs" >API Documentation</a></li>
                 
                 <li class="nav-divider"></li>
             </ul>  
             <ul class="nav navbar-nav navbar-right">
+            	<li id="goToSerendio" ><a href="https://github.com/serendio-labs/diskoveror-ta" target="_blank">GitHub</a></li>
                 <li id="goToSerendio" ><a href="http://www.serendio.com/" target="_blank">Serendio</a></li>
-                <li id="goToAboutSerendio" ><a href="http://www.serendio.com/who-we-are-2/" target="_blank">About Serendio</a></li>
+                <li id="goToAboutSerendio" ><a href="http://www.serendio.com/about-us/#overview" target="_blank">About Serendio</a></li>
             </ul>          
         </div>
     </div>
 </div>
 
 <div class="container">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-lg-12">
             <div id="rootMessages" class="alert alert-{{alertStatus}}" ng-show="rootMessages">
                 <span ng-bind="rootMessages"></span>
@@ -69,18 +65,24 @@
                    ng-show="rootMessages"></i>
             </div>
         </div>
-    </div>
-    <ng-view></ng-view>
+    </div> -->
+    <ng-view>
+    
+    </ng-view>
 </div>
 
 <script src="/js/lib/ui-bootstrap-tpls.js"></script>
-<script src="/js/lib/jquery.min.js"></script>
-<script src="/js/lib/bootstrap.min.js"></script>
+
 <script src="/js/demoapp.js"></script>
 <script src="/js/democontrollers.js"></script>
-
-<!-- Put the signInButton to invoke the gapi.signin.render to restore the credential if stored in cookie. -->
-<span id="signInButton" style="display: none" disabled="true"></span>
+<script src="/js/lib/angular-route.js"></script>
+    <script>        
+        function init() {           
+            angular.bootstrap(document, ['discoveorApp']);
+            console.log("sfsdfs");
+        };
+        init();
+    </script>
 
 </body>
 </html>

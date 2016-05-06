@@ -16,7 +16,7 @@ var app = angular.module('discoveorApp',
     config(['$routeProvider',
         function ($routeProvider) {
             $routeProvider.
-                when('/findentity', {
+                when('/demo', {
                     templateUrl: '/partials/find_entity.html'//,
                     //controller: 'FindEntityCtrl'
                 }).
@@ -28,7 +28,7 @@ var app = angular.module('discoveorApp',
                     templateUrl: '/partials/find_category.html',
                     controller: 'FindCategoryCtrl'
                 }).
-                when('/serendionlpdocs', {
+                when('/docs', {
                     templateUrl: '/partials/serendionlp_docs.html'                    
                 }).
                 when('/', {

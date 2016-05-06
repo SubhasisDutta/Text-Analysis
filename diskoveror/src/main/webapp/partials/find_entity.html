@@ -9,12 +9,124 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8">
-            <h3>Find Entity</h3>
+    	<div class="col-md-3">
+            <h3><span class="bolder">DisKoveror</span>Output</h3>
+            <div class="row full-width">
+            <div class="large-3 column">
+              <p></p>
+            </div>
+            <div class="large-9 columns">
+              <div class="nano">
+                <div class="nano-content">
+                <ul class="collapsibleList">
+                <li>
+                  <span class="entitySpan" onClick="revealDiv()"><img src="/img/add.png" alt="" class="symbol collapsibleList" ></span>Entity
+                    <ul class="entityListDiv" id="drop1">
+                    <li id="m2" class="entityList">person</li>
+                    <!-- <li>
+                      <div id="l2cover">
+                        <ul id="Person" style="padding-left:22px">
+                              
+                        </ul>
+                      </div>
+                    </li> -->
+                    <li id="m3" class="entityList">organization</li>
+                    <!-- <li>
+                      <div id="l3cover">
+                        <ul id="Organization" style="padding-left:22px">
+                              
+                        </ul>
+                      </div>
+                    </li> -->
+                    <li id="m4" class="entityList">location</li>
+                    <!-- <li>
+                      <div id="l4cover">
+                        <ul id="Location" style="padding-left:22px">
+                              
+                        </ul>
+                      </div>
+                    </li> -->    
+                    <li id="m5" class="entityList">currency</li>
+                    <!-- <li>
+                      <div id="l5cover">
+                        <ul id="Currency" style="padding-left:22px">
+                              
+                        </ul>
+                      </div>
+                    </li>  -->
+                    <li id="m6" class="entityList">percent</li>
+                    <!-- <li>
+                      <div id="l6cover">
+                        <ul id="Percent" style="padding-left:22px">
+                              
+                        </ul>
+                      </div>
+                    </li> -->
+                    <li id="m7" class="entityList">date</li>
+                    <!-- <li>
+                      <div id="l7cover">
+                        <ul id="Date" style="padding-left:22px">
+                              
+                        </ul>
+                      </div>
+                    </li> -->
+                    <li id="m8" class="entityList">time</li>
+                    <!-- <li>
+                      <div id="l8cover">
+                        <ul id="Time" style="padding-left:22px">
+                              
+                        </ul>
+                      </div>
+                    </li>  -->
+                    </ul>
+                </li>
+                <li><span class="entitySpan" onClick=""><img src="/img/add.png" alt="" class="symbol collapsibleList" ></span>Topics
+                        <!--<ul class="entityListDiv" id="drop1" style="display:block;">
+                            <li id="m10" class="entityList header"><span style="padding-left:20px;"></span></li>
+                            <li>
+                                <div id="l10cover" style="padding-top:5px; padding-bottom:5px;">-->
+                                    <ul id="topics" style="padding-left:22px; font-size:12px;">
+                                    </ul>
+                                <!--</div>
+                            </li>
+                        </ul>-->
+                       </li>
+				<li><span class="entitySpan" onClick=""><img src="/img/add.png" alt="" class="symbol collapsibleList" ></span>Sentiment
+                        <!--<ul class="entityListDiv" id="drop1" style="display:block;">
+                            <li id="m9" class="entityList header"><span style="padding-left:20px;"></span></li>
+                            <li>
+                                <div id="l9cover" style="padding-top:5px; padding-bottom:5px;">-->
+                                    <ul id="sentiment" style="padding-left:22px; font-size:12px;">
+
+                                    </ul>
+                                <!--</div>-->
+                            <!--</li>
+                        </ul>-->
+
+                       </li>
+				<li><span class="entitySpan" onClick=""><img src="/img/add.png" alt="" class="symbol collapsibleList" ></span>Keywords
+                        <!--<ul class="entityListDiv" id="drop1" style="display:block;">
+                            <li id="m11" class="entityList header"><span style="padding-left:20px;"></span></li>
+                            <li>
+                                <div id="l11cover" style="padding-top:5px; padding-bottom:5px;">-->
+                                    <ul id="keywords" style="padding-left:22px; font-size:12px;">
+                                    </ul>
+                               <!-- </div>
+                            </li>
+                        </ul>-->
+                    </li>
+                </ul> 
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+            <h3>Demo</h3>
             <form name="entityForm" novalidate role="form" action="/api/entity/all" method="get" 
             enctype="multipart/form-data" accept="application/json">
                 <div class="form-group">
-                    <label for="text">Enter text to find entities </label> 
+                    <label for="text">Enter text to find entities, topics, keywords & sentiment score. </label> 
                     <textarea id="textConent" name="text" class="form-control"> </textarea>
                 </div>
 				<h3>OR</h3>
@@ -22,8 +134,12 @@
                     <label for="file">Upload File to Parse</label>
                     <input type="file" name="file" size="45" />
                 </div>                
-                <input type="submit" value="Process Data" class="btn btn-primary"/>
+                <input type="submit" value="Analyze Now" class="btn btn-primary"/>
             </form>
+        </div>
+        <div class="col-md-3">
+            <h3>Sample Text</h3>
+            
         </div>
     </div>
 </div>
