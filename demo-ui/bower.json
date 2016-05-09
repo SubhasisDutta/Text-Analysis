@@ -1,0 +1,22 @@
+{
+  "name": "text-analysis-ui",
+  "version": "1.0.0",
+  "authors": [
+    "Subhasis Dutta"
+  ],
+  "description": "\"Web App to demonstrate different Text analysis Tools\"",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "^2.1.1",
+    "angular": "^1.2.16",
+    "AngularJS-Toaster": "toaster#^1.1.0",
+    "toastr": "~2.0.2",
+    "angular-resource": "^1.2.16",
+    "angular-route": "^1.2.16",
+    "bootstrap": "^3.1.1",
+    "angular-mocks": "^1.2.16",
+    "angular-material": "^1.0.7",
+    "angular-material-icons": "^0.7.0"
+  }
+}

@@ -1,0 +1,70 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+            <div class="navbar-header">
+            <a href="/" class="navbar-brand">
+                Text Analytics Demo</h6>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+
+            <input type="text" placeholder="Enter the Search Query ... ">
+            <md-button class="md-raised md-primary">Primary</md-button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Android APK Analysis</h1>
+        <p>Welcome to Android APK Analysis! The most comprehensive and complete tool for performing static and dynamic analysis of Android Apps.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/apps" style="width: 100%;margin-bottom: 10px;" class="btn btn-primary">See APK Analysis Reports</a>
+        </div>
+        <div class="col-md-6">
+            <a href="/apk/upload" style="width: 100%;margin-bottom: 10px;" class="btn btn-primary">Upload APK to Analyze</a>
+        </div>
+    </div>
+</div>
+
+
+
+<div layout-padding>
+
+</div>
+<md-content class="scrollable-nav-content">
+    <md-list>
+        <md-list-item>
+            Ranked Search
+        </md-list-item>
+        <md-list-item>
+            Query Expansion Search
+        </md-list-item>
+        <md-list-item>
+            Clustering
+        </md-list-item>
+        <md-list-item>
+            Google
+        </md-list-item>
+        <md-list-item>
+            Bing
+        </md-list-item>
+    </md-list>
+</md-content>
+<md-button class="md-fab md-fab-bottom-right" ng-click="vm.addUser($event)">
+    <ng-md-icon icon="add"></ng-md-icon>
+</md-button>
+
+
+<md-input-container>
+    <input ng-model="user.title" placeholder="Search Query ... ">
+
+</md-input-container>
+
+<form class="navbar-form" name="searchForm">
+    <input placeholder="Search Query ... " ng-model="username" class="form-control"/>
+    <button ng-click="signin(username, password)" class="btn btn-primary">Search</button>
+</form>
+
+
+<!-- Need a search input -->

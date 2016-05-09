@@ -1,0 +1,58 @@
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#999;border:none;}
+.tg td{font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;}
+.tg th{font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;}
+.tg .tg-vn4c{background-color:#D2E4FC}
+.tg .tg-093g{font-weight:bold;font-style:italic;text-align:center}
+.tg .tg-xdyu{font-weight:bold;font-style:italic}
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 727px">
+<colgroup>
+<col style="width: 201px">
+<col style="width: 159px">
+<col style="width: 75px">
+<col style="width: 292px">
+</colgroup>
+  <tr>
+    <th class="tg-093g">URI                                               </th>
+    <th class="tg-xdyu">Parameters</th>
+    <th class="tg-xdyu">Method</th>
+    <th class="tg-093g">Description                                       </th>
+  </tr>
+  <tr>
+    <td class="tg-vn4c">/api/all</td>
+    <td class="tg-vn4c">text= {string text to be analysed}<br>file = text file </td>
+    <td class="tg-vn4c">GET</td>
+    <td class="tg-vn4c"><b>This API will identify the entities, keywords, topic and Sentiment score for a text and return a JSON or XML response as requested.</b></td>
+  </tr>
+  <tr>
+    <td class="tg-vn4e">/api/all</td>
+    <td class="tg-vn4e">text= {string text to be analysed}<br>file = text file </td>
+    <td class="tg-vn4e">POST</td>
+    <td class="tg-vn4e"><b>This API will identify the entities, keywords, topic and Sentiment score for a text or file and return a JSON or XML response as requested.</b></td>
+  </tr>
+  <tr>
+    <td class="tg-vn4c">/api/entity/all<br>/api/entity/person<br>/api/entity/organization<br>/api/entity/location<br>/api/entity/currency<br>/api/entity/percent<br>/api/entity/date<br>/api/entity/time</td>
+    <td class="tg-vn4c">nlp=stanfordnlp or opennlp (default is Stanford NLP)<br>text= {string text to be analysed}<br>file = text file </td>
+    <td class="tg-vn4c">GET</td>
+    <td class="tg-vn4c">This API will identify the entities present in the text and return a JSON or XML response as requested.</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">/api/category/all<br>/api/category/dbpedia<br>/api/category/consise</td>
+    <td class="tg-031e">nlp=stanfordnlp or opennlp (default is Stanford NLP)<br>text= {string text to be analysed}<br>file = text file </td>
+    <td class="tg-031e">GET</td>
+    <td class="tg-031e">This API will identify the category a text can belong and list out a detailed list of attributes the text has and can be used for various analysis. The response is JSON or XML.</td>
+  </tr>
+  <tr>
+    <td class="tg-vn4c">/getalldetails</td>
+    <td class="tg-vn4c">nlp=stanfordnlp or opennlp (default is Stanford NLP)<br>text= {string text to be analysed}<br>file = text file </td>
+    <td class="tg-vn4c">GET</td>
+    <td class="tg-vn4c">This returns both entity and category details as JSON and XML as requested.</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">/getallnlp</td>
+    <td class="tg-031e">text= {string text to be analysed}<br>file = text file</td>
+    <td class="tg-031e">GET</td>
+    <td class="tg-031e">This returns all entity detected by StanfordNLP and OpenNLP package. The result can be used for comparison or further optimization by considering the union or common of the two results. </td>
+  </tr>  
+</table>

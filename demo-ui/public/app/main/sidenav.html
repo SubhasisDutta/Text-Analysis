@@ -1,0 +1,17 @@
+ <md-sidenav class="md-sidenav-left md-whiteframe-z2" 
+                md-component-id="left" 
+                md-is-locked-open="$mdMedia('gt-sm')">
+  <md-toolbar>
+    <h1>Text Search Demo</h1>
+  </md-toolbar>
+  <md-content>
+      <md-list >
+          <md-list-item ng-repeat="demo in demoTypes">
+              <md-button ng-click="selectDemoType(demo)" ng-class="{'selected': demo === demoSelected }">
+              <md-icon md-svg-icon="hangouts" class="avatar"></md-icon>
+              {{demo}}
+              </md-button>
+          </md-list-item>
+      </md-list>
+  </md-content>
+</md-sidenav>

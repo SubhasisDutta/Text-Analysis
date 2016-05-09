@@ -9,3 +9,5 @@ sentiment-topic-keyword-server/.idea/
 diskoveror/.classpath
 diskoveror/.project
 diskoveror/.settings/
+demo-ui/node_modules/
+demo-ui/public/vendor/

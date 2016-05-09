@@ -1,0 +1,176 @@
+<div flex layout="row">
+    <div flex="5" >
+        &nbsp;
+    </div>
+    <div flex>
+        <md-content layout-padding>
+            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                <form name="searchForm" ng-submit="getSearchResults(searchQuery)">
+                   <md-input-container class="md-block" id="searchBox" >
+                        <label>Search Query ... </label>
+                        <input md-maxlength="250" required md-no-asterisk name="description" ng-model="searchQuery">
+                        <div ng-messages="projectForm.description.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="md-maxlength">The Search Query has to be less than 250 characters long.</div>
+                        </div>
+                   </md-input-container>
+                   <md-button class="md-raised md-primary" ng-click="getSearchResults(searchQuery)">Search</md-button>
+                </form>
+            </section>
+        </md-content>
+    </div>
+</div>
+<div flex>
+    <!-- Dynamic Tabbed result display. To be shown only when  -->
+    <p style="width: 100%; text-align: center; font-size: 1.6em; " ng-show="isBeginingScreen()">
+        Enter a query above ...
+
+        <md-list >
+            This Search Engine is a technology demonstrator:
+            <md-list-item>
+                It demonstrates an implementation of a Custom Search Engine developed using Apache Lucene.
+            </md-list-item>
+            <md-list-item>
+                If there is a public website we can enable Custom Search using Google Search API.
+            </md-list-item>
+            <md-list-item>
+                The Current demo demonstrates Search from walmart.com and target.com .
+            </md-list-item>
+            <md-list-item>
+                Also for general Web Search We have a demo using Bing Search API.
+            </md-list-item>
+            <md-list-item>
+                All the Search Services can be easily integrated with any applications through REST API.
+            </md-list-item>
+            <md-list-item>
+                For details <a href="#">Click</a>.
+            </md-list-item>
+        </md-list>
+    </p>
+    <p style="width: 100%; text-align: center; font-size: 1.6em; " ng-show="isQueryProcessing()">
+        Please Wait ... Result are on its way ....
+    </p>
+    <md-content flex id="contentTabs" ng-show="isResultAvailable()">
+        <md-tabs md-dynamic-height=""
+                 md-stretch-tabs="always"
+                 md-selected="tabIndex">
+            <md-tab label="Relevance Models" style="font-size: 1.3em;font-weight: bold;">
+                <p>Top 50 from about {{searchQuerySearchResults.resultCount}} results ( {{searchQuerySearchResults.executionTime/1000}} Seconds)</p>
+                <md-list>
+                    <md-list-item ng-repeat="item in searchQuerySearchResults.results" class="noright">
+                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch style="width: 100%;">
+                            <md-card-title >
+                                <md-card-title-media>
+                                    <div class="md-media-md card-media">
+                                        <img alt="{{item.title}}" ng-src="{{item.imageUrl}}" class="md-avatar"  />
+                                    </div>
+                                </md-card-title-media>
+                                <md-card-title-text>
+                                    <span class="md-headline"><a href="{{item.url}}" target="_blank">{{item.title}}</a></span>
+                                    <span class="md-subhead">{{item.description}}</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                        </md-card>
+                    </md-list-item>
+                </md-list>
+            </md-tab>
+            <md-tab label="Clustering">
+                <p> {{searchClusterSearchResults.resultCount}} results ( {{searchClusterSearchResults.executionTime/1000}} Seconds)</p>
+                <md-list>
+                    <md-list-item ng-repeat="item in searchClusterSearchResults.clusters" class="noright">
+                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch style="width: 100%;">
+                            <md-card-title >
+                                <md-card-title-text>
+                                    <span class="md-headline"><a href="{{item.url}}" target="_blank">{{item.title}}</a></span>
+                                    <span class="md-subhead">{{item.title}}  {{item.size}}  {{item.clusterNo}}</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                        </md-card>
+                    </md-list-item>
+                </md-list>
+                <md-list>
+                    <md-list-item ng-repeat="item in searchClusterSearchResults.results" class="noright">
+                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch style="width: 100%;">
+                            <md-card-title >
+                                <md-card-title-media>
+                                    <div class="md-media-md card-media">
+                                        <img alt="{{item.title}}" ng-src="{{item.imageUrl}}" class="md-avatar"  />
+                                    </div>
+                                </md-card-title-media>
+                                <md-card-title-text>
+                                    <span class="md-headline"><a href="{{item.url}}" target="_blank">{{item.title}}</a></span>
+                                    <span class="md-subhead">{{item.description}}</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                        </md-card>
+                    </md-list-item>
+                </md-list>
+            </md-tab>
+            <md-tab label="Query Expansion">
+                <h4>Expanded Query : {{searchQueryExpansionSearchResults.expandedQuery}} </h4>
+                <p>Top 50 from about {{searchQueryExpansionSearchResults.resultCount}} results ( {{searchQueryExpansionSearchResults.executionTime/1000}} Seconds)</p>
+                <md-list>
+                    <md-list-item ng-repeat="item in searchQueryExpansionSearchResults.results" class="noright">
+                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch style="width: 100%;">
+                            <md-card-title >
+                                <md-card-title-media>
+                                    <div class="md-media-md card-media">
+                                        <img alt="{{item.title}}" ng-src="{{item.imageUrl}}" class="md-avatar"  />
+                                    </div>
+                                </md-card-title-media>
+                                <md-card-title-text>
+                                    <span class="md-headline"><a href="{{item.url}}" target="_blank">{{item.title}}</a></span>
+                                    <span class="md-subhead">{{item.description}}</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                        </md-card>
+                    </md-list-item>
+                </md-list>
+            </md-tab>
+            <md-tab label="GOOGLE">
+                <p>Top 10 from about {{googleSearchResults.searchInformation.formattedTotalResults}} results ( {{googleSearchResults.searchInformation.formattedSearchTime}} Seconds)</p>
+                <md-list>
+                    <md-list-item ng-repeat="item in googleSearchResults.items" class="noright">
+                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch style="width: 100%;">
+                            <md-card-title >
+                                <md-card-title-media>
+                                    <div class="md-media-md card-media">
+                                        <img alt="{{item.title}}" ng-src="{{item.pagemap.cse_thumbnail[0].src}}" class="md-avatar" />
+                                    </div>
+                                </md-card-title-media>
+                                <md-card-title-text>
+                                    <span class="md-headline"><a href="{{item.link}}" target="_blank">{{item.title}}</a></span>
+                                    <span class="md-subhead">{{item.snippet}}</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                        </md-card>
+                    </md-list-item>
+                </md-list>
+            </md-tab>
+            <md-tab label="BING">
+                <p>Top 50 results</p>
+                <md-list>
+                    <md-list-item ng-repeat="item in bingSearchResults.d.results" class="noright">
+                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch style="width: 100%;">
+                            <md-card-title >
+                                <md-card-title-media>
+                                    <div class="md-media-md card-media">
+                                        <img alt="{{item.Title}}" ng-src="{{item.pagemap.cse_thumbnail[0].src}}" class="md-avatar"  />
+                                    </div>
+                                </md-card-title-media>
+                                <md-card-title-text>
+                                    <span class="md-headline"><a href="{{item.Url}}" target="_blank">{{item.Title}}</a></span>
+                                    <span class="md-subhead">{{item.Description}}</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                        </md-card>
+                    </md-list-item>
+                </md-list>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>
+
+
+
+
