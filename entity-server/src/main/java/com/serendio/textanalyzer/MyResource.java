@@ -1,4 +1,4 @@
-package com.diskoveror;
+package com.serendio.textanalyzer;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
