@@ -73,20 +73,7 @@ class PyInterfaceServer:
     def getKeywords(self, text):
         text=text.decode('utf-8')
         print "Keyword Text",text
-        keywords = self.catz.getK The Union government on Thursday proposed to strip the Reserve Bank Governors veto vote on
- Indias monetary policy. The government also proposed to grant itself the power to appoint four of t
-he six members of the Monetary Policy Committee, whose remit will include decisions on setting inter
-est rates to maintain inflation at the targeted level. The revised draft of the Indian Financial Cod
-e, put out by the Union Finance Ministry for comments, proposes that the Reserve Bank Chairperson sh
-all head the committee, with no reference to the Governor. It is not clear from the draft if a re-de
-signation is planned. An earlier draft had proposed to give the Governor the right to overrule the m
-onetary policy committee decision. If the inflation target is not met, then the Reserve Bank will ha
-ve to explain the reasons and propose remedial actions. Under the revised draft, the non-government
-members of the committee are to be drawn from the Reserve Bank. The Reserve Banks Board will nominat
-e one of its executives as the fifth member of the committee. The Chairperson will nominate one of i
-ts employees as the sixth member. The move comes in the wake of a severe breakdown of talks between
-the Centre and the Reserve Bank over amendments to the RBI Act, which Finance Minister Arun Jaitley
-had announced in his Budget speech.eywords(text)
+        keywords = self.catz.getKeywords(text)
         return keywords 
          
 

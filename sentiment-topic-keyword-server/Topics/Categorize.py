@@ -133,5 +133,4 @@ class Categorize(object):
 				baggedCatz = ["general"]
 			else:
 				baggedCatz=swordCatz[0].split("|")
-
 		return ("|".join(baggedCatz))
