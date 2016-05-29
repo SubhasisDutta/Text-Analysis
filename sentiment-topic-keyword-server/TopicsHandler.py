@@ -9,18 +9,18 @@ topicsService = TopicsService()
 
 class TopicsHandler(tornado.web.RequestHandler):
     def getResults(self,text):
-        print "inside topic results"
-        print "Text: ",text
+        # print "inside topic results"
+        # print "Text: ",text
         t={}
         t["text"] = text
         text = re.sub('[^A-Za-z0-9]+', ' ', text)
         t["topics"]=topicsService.getTopics(text)
         t["keywords"]=topicsService.getKeywords(text)
-        print str(t)
+        # print str(t)
         return t
 
     def get(self):
-        print "Into Topic GET"
+        # print "Into Topic GET"
         text=self.get_argument("text")
         results = self.getResults(text)
         response_dict = {}
@@ -30,7 +30,7 @@ class TopicsHandler(tornado.web.RequestHandler):
         self.set_header("Content-Type", "application/json")
 
     def post(self):
-        print "Into Topics POST"
+        # print "Into Topics POST"
         body_string=str(self.request.body)
         request_obj=None
         results = []

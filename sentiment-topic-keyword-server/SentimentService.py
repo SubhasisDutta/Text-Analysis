@@ -17,7 +17,7 @@ class SentimentService:
         '''
         try:
             S = self.S.getSentimentScore(text)
-            print ("Sentiment Text : " + text + " ||| SentimentScore[-5 to 5]: " + str(S))
+            # print ("Sentiment Text : " + text + " ||| SentimentScore[-5 to 5]: " + str(S))
             return S
         except Exception as err:
             print err

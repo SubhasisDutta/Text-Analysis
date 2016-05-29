@@ -10,14 +10,14 @@ sentimentService = SentimentService()
 class SentimentHandler(tornado.web.RequestHandler):
     def getResults(self,text):
         results = []
-        print "inside results"
+        # print "inside results"
         sentences=text.split(". ")
         for s in sentences:
             print "Sentence: ",s
             t={}
             t["sentence"] = s
             t["score"] = sentimentService.getSentimentScore(s)
-            print str(t)
+            # print str(t)
             results.append(t)
         return results
 
@@ -31,7 +31,7 @@ class SentimentHandler(tornado.web.RequestHandler):
         self.set_header("Content-Type", "application/json")
 
     def post(self):
-        print "Into Sentiment POST"
+        # print "Into Sentiment POST"
         body_string=str(self.request.body)
         request_obj=None
         results = []
