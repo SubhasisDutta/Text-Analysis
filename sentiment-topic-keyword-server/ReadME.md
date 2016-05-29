@@ -16,7 +16,7 @@ You should get the  message from server.
 Also you can run the client.py to test.
 
 From Python Console type
-execfile("server.py");
+execfile("server-tornado.py");
 
 
 easy_install -U gensim
