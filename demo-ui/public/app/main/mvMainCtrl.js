@@ -35,7 +35,7 @@ angular.module('app').controller('mvMainCtrl', function($scope,$resource) {
             var bingSearchResource = $resource("/api/bingsearch/:query");
             $scope.bingSearchResults = bingSearchResource.get({query:searchQuery},function(){
                 $scope.resultAvailable = true;
-                console.log($scope.bingSearchResults.d.results[0]);
+                //console.log($scope.bingSearchResults.d.results[0]);
                 //console.log($scope.googleSearchResults.items[0]);
             });
 
