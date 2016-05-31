@@ -1,6 +1,7 @@
 package com.irsearch.commercesearch.init;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -11,8 +12,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Properties;
 
 import com.irsearch.commercesearch.config.SearchConstants;
+
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -39,6 +42,34 @@ public class IndexFiles {
 	 * @throws ParseException
 	 */
 	public static void main(String[] args) throws JSONException, IOException, ParseException{
+		Properties prop = new Properties();
+		InputStream input = null;
+		
+		try {
+
+			input = new FileInputStream(args[0]);
+			// load a properties file
+			prop.load(input);
+			SearchConstants.BASE_URI=prop.getProperty("BASE_URI");	
+			SearchConstants.INPUT_DAT_FOLDER=prop.getProperty("INPUT_DAT_FOLDER");
+			SearchConstants.OUTPUT_SEPERATE_DATA_FILES=prop.getProperty("OUTPUT_SEPERATE_DATA_FILES");
+			SearchConstants.DATA_FILE=prop.getProperty("DATA_FILE");
+			SearchConstants.WEB_PAGES=prop.getProperty("WEB_PAGES");
+			SearchConstants.INDEX_DIRECTORY_PATH=prop.getProperty("INDEX_DIRECTORY_PATH");
+			//System.out.println(SearchConstants.INDEX_DIRECTORY_PATH);
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		System.out.println(SearchConstants.OUTPUT_SEPERATE_DATA_FILES);
 		IndexFiles indexFiles = new IndexFiles();
 		indexFiles.indexer(); 
 	}
@@ -54,8 +85,8 @@ public class IndexFiles {
 	    IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
 	    iwc.setOpenMode(OpenMode.CREATE);
 	    IndexWriter writer = new IndexWriter(dir, iwc);
-	    Path docDir = Paths.get(SearchConstants.inputDocumentDirectoryPath);
-	    File files = new File(SearchConstants.inputDocumentDirectoryPath);
+	    Path docDir = Paths.get(SearchConstants.OUTPUT_SEPERATE_DATA_FILES);
+	    File files = new File(SearchConstants.OUTPUT_SEPERATE_DATA_FILES);
 //		JSONParser json = new JSONParser();
 //		for(File f : files.listFiles()){
 //		    Parse the JSON object in the file to get the URL and the contents

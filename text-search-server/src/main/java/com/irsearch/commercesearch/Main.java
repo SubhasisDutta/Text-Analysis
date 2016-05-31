@@ -1,13 +1,16 @@
 package com.irsearch.commercesearch;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
+import java.util.Properties;
 
-import com.irsearch.commercesearch.config.SearchConstants;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
+import com.irsearch.commercesearch.config.SearchConstants;
 import com.irsearch.commercesearch.resource.SearchStubDAO;
 import com.irsearch.commercesearch.resource.SearchDAO;
 import com.irsearch.commercesearch.resource.iSearchDAO;
@@ -34,12 +37,38 @@ public class Main {
      * @throws IOException
      */
 	public static void main(String[] args)throws IOException {
+		Properties prop = new Properties();
+		InputStream input = null;
+		
+		try {
+
+			input = new FileInputStream(args[0]);
+			// load a properties file
+			prop.load(input);
+			SearchConstants.BASE_URI=prop.getProperty("BASE_URI");	
+			SearchConstants.INPUT_DAT_FOLDER=prop.getProperty("INPUT_DAT_FOLDER");
+			SearchConstants.OUTPUT_SEPERATE_DATA_FILES=prop.getProperty("OUTPUT_SEPERATE_DATA_FILES");
+			SearchConstants.DATA_FILE=prop.getProperty("DATA_FILE");
+			SearchConstants.WEB_PAGES=prop.getProperty("WEB_PAGES");
+			SearchConstants.INDEX_DIRECTORY_PATH=prop.getProperty("INDEX_DIRECTORY_PATH");
+			//System.out.println(SearchConstants.INDEX_DIRECTORY_PATH);
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		final HttpServer server = startServer();
         System.out.println(String.format("Jersey app started with WADL available at "
                 + "%s \nHit enter to stop it...", SearchConstants.BASE_URI));
         System.in.read();
-        server.stop();
-
+        server.stop();		
 	}
 
 }

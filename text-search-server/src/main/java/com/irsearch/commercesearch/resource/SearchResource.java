@@ -18,7 +18,7 @@ public class SearchResource {
 	public SearchResults getSearchResults(@QueryParam(value="query") String query){
 		return dao.getQuerySearch(query);
 	}
-	
+	/*
 	@GET
 	@Path("/queryexpansion")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -32,4 +32,5 @@ public class SearchResource {
 	public SearchClusterResults getSearchClustersResults(@QueryParam(value="query") String query){
 		return dao.getClusterSearch(query);
 	}
+	*/
 }

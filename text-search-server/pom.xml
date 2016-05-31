@@ -113,7 +113,7 @@
   </dependencies>
   
   <build>
-  		<finalName>Rest_API_Stub_Server</finalName>
+  		<finalName>Rest_API_Search_Server</finalName>
         <plugins>
             <!-- download source code in Eclipse, best practice -->
 			<plugin>
