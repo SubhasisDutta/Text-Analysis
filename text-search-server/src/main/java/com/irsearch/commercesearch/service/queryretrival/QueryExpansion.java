@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
-import org.lemurproject.kstem.KrovetzStemmer;
+//import org.lemurproject.kstem.KrovetzStemmer;
 
 
 public class QueryExpansion {
-     
+    /* 
     private HashMap<String, Integer> stopWords;
     private HashMap<String, Integer> originalQuery;
     private ArrayList<String> [] fileContents;
@@ -252,8 +252,8 @@ public class QueryExpansion {
         
         
         return newQuery;
-    }
-    
+    }*/
+    /*
     static double tf(ArrayList<String> doc, String term){
         KrovetzStemmer stemmer = new KrovetzStemmer();
         
@@ -305,9 +305,9 @@ public class QueryExpansion {
                 }
     	return Math.log(originalQuery.size()/n);
     }
+    */
     
-    
-    
+    /*
     public String getScalarClusterExpansion(String oldQuery, ArrayList<String> files){
         KrovetzStemmer stemmer = new KrovetzStemmer();
         String newQuery ="";
@@ -339,7 +339,7 @@ public class QueryExpansion {
         
         ArrayList<Integer> newQueryTermRows = new ArrayList<Integer>();
         
-        /* matrix with rows of stems and columns of documents. one for each Query term?? I think so...*/
+        /* matrix with rows of stems and columns of documents. one for each Query term?? I think so...
         
         newQuery = oldQuery;
         Map<String, String> sortedLocalVocabMap = new TreeMap<String, String>(localStemmedVocab);
@@ -513,7 +513,7 @@ public class QueryExpansion {
         
         ArrayList<Integer> newQueryTermRows = new ArrayList<Integer>();
         
-        /* matrix with rows of stems and columns of documents. one for each Query term?? I think so...*/
+        // matrix with rows of stems and columns of documents. one for each Query term?? I think so...
         
         newQuery = oldQuery;
         for(String key: originalQuery.keySet()){
@@ -794,7 +794,8 @@ public class QueryExpansion {
             
        }
        
-       newQuery = /*oldQuery+" "+*/getNewQueryTerms(newQueryTermRows,localStemmedVocab, oldQuery);
+       //newQuery = /*oldQuery+" "+
+		//getNewQueryTerms(newQueryTermRows,localStemmedVocab, oldQuery);
 
         //Map<String, Integer> sortedMap = new TreeMap<String, Integer>(localVocab);
         return newQuery;
@@ -953,5 +954,7 @@ public class QueryExpansion {
         }
         return localVocab;
     }
+    
+    */
 
 }

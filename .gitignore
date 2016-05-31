@@ -12,3 +12,6 @@ diskoveror/.settings/
 demo-ui/node_modules/
 demo-ui/public/vendor/
 entity-server/.settings/
+text-search-server/.settings/
+text-search-server/.classpath
+text-search-server/.project

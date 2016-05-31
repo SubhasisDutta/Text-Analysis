@@ -22,6 +22,7 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.FSDirectory;
 import org.json.JSONException;
 
+import com.irsearch.commercesearch.config.SearchConstants;
 import com.irsearch.commercesearch.init.JSONParser;
 import com.irsearch.commercesearch.model.SearchEntity;
 import com.irsearch.commercesearch.model.SearchExpansionResults;
@@ -29,15 +30,15 @@ import com.irsearch.commercesearch.model.SearchResults;
 
 public class Searcher {
 
-	public final static String indexDirectoryPath = "/Users/wyatt.chastain/Code/UTD/CS6322/text-search/IndexData/Index";
+	public final static String indexDirectoryPath = SearchConstants.INDEX_DIRECTORY_PATH;
 	public static List<SearchEntity> finalList = new ArrayList<SearchEntity>();
 	public static List<SearchEntity> finalExpList = new ArrayList<SearchEntity>();
 	public static int resultCount;
 
 	public SearchResults searchFiles(String srchQuery) throws IOException, ParseException, JSONException{
 		finalList = searchIndex(optimiseQuery(srchQuery));
-	    System.out.println(srchQuery);
-	    System.out.println(finalList.toString());
+	    //System.out.println(srchQuery);
+	    //System.out.println(finalList.toString());
 	    SearchResults sr = new SearchResults();
 	    sr.setInitialQuery(srchQuery);
 	    sr.setResultCount(resultCount);
@@ -47,11 +48,12 @@ public class Searcher {
 
 	public SearchExpansionResults searchExpandedQuery(String srchQuery) throws ParseException, IOException, JSONException{
 		QueryExpansion qe = new QueryExpansion();
-		String expandedQuery = qe.getMetricClusterExpansion(srchQuery, docContent(finalList));
-		finalExpList = searchIndex(expandedQuery);
+		//TODO: Remove this to make it work
+		//String expandedQuery = qe.getMetricClusterExpansion(srchQuery, docContent(finalList));
+		//finalExpList = searchIndex(expandedQuery);
 	    SearchExpansionResults ser = new SearchExpansionResults();
 	    ser.setInitialQuery(srchQuery);
-	    ser.setExpandedQuery(expandedQuery);
+	    //ser.setExpandedQuery(expandedQuery);
 	    ser.setResultCount(resultCount);
 	    ser.setResults(finalExpList);
 	    return ser;
@@ -66,7 +68,7 @@ public class Searcher {
 	    Analyzer analyzer = new StandardAnalyzer();
 	    QueryParser parser = new QueryParser(field, analyzer);
 	    Query query = parser.parse(srchQuery);
-	    System.out.println("Searching for: " + query.toString(field));
+	    //System.out.println("Searching for: " + query.toString(field));
 	    TopDocs td = searcher.search(query, 150000);
 	    ScoreDoc[] sd = td.scoreDocs;
 	    if(sd.length <= 0){
