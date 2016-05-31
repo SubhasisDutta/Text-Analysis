@@ -22,13 +22,13 @@
 </head>
 <body ng-app="app" ng-cloak layout="row" ng-controller="mvMainCtrl">
    <!--To See how to have a Sidenav -->
-   <!--<div ng-include="'/partials/main/sidenav.html'" layout="vertical"></div>-->
+   <div ng-include="'/partials/main/sidenav.html'" layout="vertical"></div>
    <div layout="column" flex>
        <div ng-include="'/partials/main/toolbar-header'"></div>
 
        <div flex>
            <md-content  flex id="content">
-               <div ng-include="'/partials/main/main-content'"></div>
+               <div ng-view></div>
            </md-content>
        </div>
    </div>
@@ -51,11 +51,19 @@
 	<script type="text/javascript" src="/app/app.js"></script>
 
 	<script type="text/javascript" src="/app/main/mvMainCtrl.js"></script>
+    <script type="text/javascript" src="/app/common/mvNotifier.js"></script>
+
+   <script type="text/javascript" src="/app/entity-analysis/mvEntityAnalysisCtrl.js"></script>
+   <script type="text/javascript" src="/app/topic-analysis/mvTopicAnalysisCtrl.js"></script>
+   <script type="text/javascript" src="/app/sentiment-analysis/mvSentimentAnalysisCtrl.js"></script>
+   <script type="text/javascript" src="/app/text-search/mvTextSearchCtrl.js"></script>
+   <script type="text/javascript" src="/app/data-simulator/mvDataSimulatorCtrl.js"></script>
+
     <!--<script type="text/javascript" src="/app/main/mvMainContentCtrl.js"></script>-->
     <!--<script type="text/javascript" src="/app/main/mvToolbarHeader.js"></script>-->
 
 
 
-	<script type="text/javascript" src="/app/common/mvNotifier.js"></script>
+
 </body>
 </html>

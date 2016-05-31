@@ -36,8 +36,8 @@ md-sidenav md-list {
 }
 .avatar {
   position: relative;
-  width: 128px !important;
-  height: 128px !important;
+  width: 68px !important;
+  height: 68px !important;
   border: 1px solid #ddd;
   border-radius: 50%;
   display: inline-block;
