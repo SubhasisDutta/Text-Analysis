@@ -12,8 +12,9 @@ module.exports = {
     bing_account_key: 'hi5LIvAVghLrU2pq7b3VYYwcXt0H09uAcX49y8Ag1mo',
     bing_query_URL: 'https://api.datamarket.azure.com/Bing/Search/v1/Web',
     search_query_ws : 'http://localhost:8989/api/search?query=',
-    //query_expansion_ws: 'http://localhost:8989/api/queryexpansion?query=',
-    //query_cluster_ws: 'http://localhost:8989/api/clustering?query='
+    entity_server_ws : 'http://localhost:8080/api/entity/all',
+    query_expansion_ws: 'http://localhost:8989/api/queryexpansion?query=',
+    query_cluster_ws: 'http://localhost:8989/api/clustering?query='
   },
   production: {
     rootPath: rootPath,    

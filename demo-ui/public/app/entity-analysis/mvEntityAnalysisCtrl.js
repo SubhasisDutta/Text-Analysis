@@ -19,35 +19,12 @@ angular.module('app').controller('mvEntityAnalysisCtrl', function($scope,$resour
         }
         //Go get the reusults if any one gives result make it available
         if($scope.queryAvailableFlag){
-            var googleSearchResource = $resource("/api/googlesearch/:query");
-            $scope.googleSearchResults = googleSearchResource.get({query:searchQuery},function(){
-                $scope.resultAvailable = true;
-                //console.log($scope.googleSearchResults);
-                //console.log($scope.googleSearchResults.items[0]);
-            });
+            var entityResource = $resource("/api/find-entity");
 
-            var bingSearchResource = $resource("/api/bingsearch/:query");
-            $scope.bingSearchResults = bingSearchResource.get({query:searchQuery},function(){
+            var response = entityResource.save({text:searchQuery},function(){
+                console.log(response);
                 $scope.resultAvailable = true;
-                //console.log($scope.bingSearchResults.d.results[0]);
-                //console.log($scope.googleSearchResults.items[0]);
             });
-
-            var searchQueryResource = $resource("/api/search/:query");
-            $scope.searchQuerySearchResults = searchQueryResource.get({query:searchQuery},function(){
-                $scope.resultAvailable = true;
-                console.log($scope.searchQuerySearchResults);
-            });
-            /*var searchQueryExpansionResource = $resource("/api/queryexpansion/:query");
-             $scope.searchQueryExpansionSearchResults = searchQueryExpansionResource.get({query:searchQuery},function(){
-             $scope.resultAvailable = true;
-             console.log($scope.searchQueryExpansionSearchResults);
-             });
-             var searchClusterResource = $resource("/api/clustering/:query");
-             $scope.searchClusterSearchResults = searchClusterResource.get({query:searchQuery},function(){
-             $scope.resultAvailable = true;
-             console.log($scope.searchClusterSearchResults);
-             });*/
         }
     };
     $scope.isBeginingScreen = function(){
@@ -64,5 +41,9 @@ angular.module('app').controller('mvEntityAnalysisCtrl', function($scope,$resour
     };
     $scope.isResultAvailable = function(){
         return $scope.queryAvailableFlag && $scope.resultAvailable;
+    };
+    $scope.resetPage =function(){
+        $scope.queryAvailableFlag=false;
+        $scope.resultAvailable = false;
     };
 });
