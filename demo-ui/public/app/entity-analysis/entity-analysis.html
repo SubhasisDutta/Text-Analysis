@@ -32,50 +32,18 @@
     <p style="width: 100%; text-align: center; font-size: 1.6em; " ng-show="isQueryProcessing()">
         Please Wait ... Result are on its way ....
     </p>
-    <md-grid-list
-            md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
-            md-row-height-gt-md="1:1" md-row-height="2:2"
-            md-gutter="12px" md-gutter-gt-sm="8px" ng-show="isResultAvailable()">
-        <md-grid-tile class="gray"
-                      md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
-            <md-grid-tile-footer>
-                <h3>#1: (3r x 2c)</h3>
-            </md-grid-tile-footer>
-        </md-grid-tile>
-        <md-grid-tile class="green">
-            <md-grid-tile-footer>
-                <h3>#2: (1r x 1c)</h3>
-            </md-grid-tile-footer>
-        </md-grid-tile>
-        <md-grid-tile class="yellow">
-            <md-grid-tile-footer>
-                <h3>#3: (1r x 1c)</h3>
-            </md-grid-tile-footer>
-        </md-grid-tile>
-        <md-grid-tile class="blue"
-                      md-rowspan="2">
-            <md-grid-tile-footer>
-                <h3>#4: (2r x 1c)</h3>
-            </md-grid-tile-footer>
-        </md-grid-tile>
-        <md-grid-tile class="red"
-                      md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
-            <md-grid-tile-footer>
-                <h3>#5: (2r x 2c)</h3>
-            </md-grid-tile-footer>
-        </md-grid-tile>
-        <md-grid-tile class="green"
-                      md-rowspan="2" >
-            <md-grid-tile-footer>
-                <h3>#6: (2r x 1c)</h3>
-            </md-grid-tile-footer>
-        </md-grid-tile>
-    </md-grid-list>
-    <md-content flex id="contentTabs" ng-show="isResultAvailable()">
+    <div layout="row" ng-show="isResultAvailable()" >
+        <div flex="25">
+            <sd-block-list-display dataobj="dataobj" ng-repeat="dataobj in entityBlocks" ng-if="displayBlock(dataobj.contents)"/>
+        </div>
+        <div flex>
+            <md-content flex id="entityFormatedOutput">
+                <p ng-bind-html="formatedResult"></p>
+            </md-content>
+        </div>
 
-        Done
+    </div>
 
-    </md-content>
     <md-button class="md-raised md-primary" ng-click="resetPage()" ng-show="isResultAvailable()">Back</md-button>
 </div>
 

@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute','ngMaterial', 'ngMdIcons', 'ngMessages']);
+angular.module('app', ['ngResource', 'ngRoute','ngMaterial', 'ngMdIcons', 'ngMessages','ngSanitize']);
 
 angular.module('app').config(function($routeProvider, $locationProvider,$mdIconProvider, $mdThemingProvider) {
   $locationProvider.html5Mode(true);

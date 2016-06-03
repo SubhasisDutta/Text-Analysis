@@ -24,7 +24,7 @@ exports.getEntityResults = function(req, res) {
         } else {
             //console.log(response.statusCode, body);
             var b = JSON.parse(body)[0];
-            console.log(b);
+            //console.log(b);
             res.send(b);
         }
     });
