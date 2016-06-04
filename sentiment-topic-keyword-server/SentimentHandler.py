@@ -13,7 +13,7 @@ class SentimentHandler(tornado.web.RequestHandler):
         # print "inside results"
         sentences=text.split(". ")
         for s in sentences:
-            print "Sentence: ",s
+            # print "Sentence: ",s
             t={}
             t["sentence"] = s
             t["score"] = sentimentService.getSentimentScore(s)
