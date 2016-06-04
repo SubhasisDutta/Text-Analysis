@@ -1,12 +1,31 @@
-angular.module('app', ['ngResource', 'ngRoute','ngMaterial', 'ngMdIcons', 'ngMessages']);
+angular.module('app', ['ngResource', 'ngRoute','ngMaterial', 'ngMdIcons', 'ngMessages','ngSanitize']);
 
 angular.module('app').config(function($routeProvider, $locationProvider,$mdIconProvider, $mdThemingProvider) {
-  
   $locationProvider.html5Mode(true);
   $routeProvider
-      .when('/', { 
-        templateUrl: '/partials/main/main-content',
-        controller: 'mvMainContentCtrl'
+      .when('/text-search', {
+          templateUrl: '/partials/text-search/text-search',
+          controller: 'mvTextSearchCtrl'
+      })
+      .when('/sentiment-analysis', {
+          templateUrl: '/partials/sentiment-analysis/sentiment-analysis',
+          controller: 'mvSentimentAnalysisCtrl'
+      })
+      .when('/topic-analysis', {
+          templateUrl: '/partials/topic-analysis/topic-analysis',
+          controller: 'mvTopicAnalysisCtrl'
+      })
+      .when('/data-simulator', {
+          templateUrl: '/partials/data-simulator/data-simulator',
+          controller: 'mvDataSimulatorCtrl'
+      })
+      .when('/entity-analysis', {
+        templateUrl: '/partials/entity-analysis/entity-analysis',
+        controller: 'mvEntityAnalysisCtrl'
+      })
+      .when('/', {
+          templateUrl: '/partials/entity-analysis/entity-analysis',
+          controller: 'mvEntityAnalysisCtrl'
       });
 
   $mdIconProvider
@@ -18,8 +37,8 @@ angular.module('app').config(function($routeProvider, $locationProvider,$mdIconP
         .icon('menu', '/css/svg/menu.svg', 24);
 
   $mdThemingProvider.theme('default')
-        .primaryPalette('orange')
-        .accentPalette('green');
+        .primaryPalette('blue')
+        .accentPalette('red');
 });
 
 angular.module('app').run(function($rootScope, $location) {

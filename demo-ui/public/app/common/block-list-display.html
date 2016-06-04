@@ -1,0 +1,14 @@
+<div>
+    <md-toolbar layout="row" class="md-hue-1 listHeight" style="width :90%;background-color: {{dataobj.bgColor}}">
+        <div class="md-toolbar-tools reduceToolBar">
+            <span>{{dataobj.displayName}}</span>
+        </div>
+    </md-toolbar>
+    <md-content>
+        <md-list class="md-dense" flex>
+            <md-list-item class="md-1-line md-long-text listHeight" ng-repeat="content in dataobj.contents">
+                <span>{{ content }}</span>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</div>

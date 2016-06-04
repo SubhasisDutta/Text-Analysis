@@ -1,6 +1,7 @@
 var google_query = require('../controllers/googleController');
 var bing_query = require('../controllers/bingController');
 var search_query = require('../controllers/searchController');
+var ta_control = require('../controllers/textAnalysisControllers');
 
 module.exports = function(app,config) {
 
@@ -10,6 +11,10 @@ module.exports = function(app,config) {
   app.get('/api/search/:query',search_query.getQuerySearchResults);
   app.get('/api/queryexpansion/:query',search_query.getExpansionSearchResults);
   app.get('/api/clustering/:query',search_query.getClusterSearchResults);
+  app.post('/api/find-entity',ta_control.getEntityResults);
+  app.post('/api/find-topics',ta_control.getTopicResults);
+  app.post('/api/find-sentiments',ta_control.getSentimentResults);
+  app.get('/api/sentiment-level',ta_control.getSentimentLevel);
 
   app.get('/partials/*', function(req, res) {
     res.render('../../public/app/' + req.params[0]);
