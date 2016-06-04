@@ -2,119 +2,49 @@
     <div flex="5" >
         &nbsp;
     </div>
-    <div flex>
-        <md-content layout-padding>
+    <div flex style="font-size: 0.8em;">
+        <md-content layout-padding ng-hide="isResultAvailable()">
             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                 <form name="searchForm" ng-submit="getSearchResults(searchQuery)">
-                   <md-input-container class="md-block" id="searchBox" >
-                        <label>Search Query ... </label>
-                        <input md-maxlength="250" required md-no-asterisk name="description" ng-model="searchQuery">
-                        <div ng-messages="projectForm.description.$error">
-                            <div ng-message="required">This is required.</div>
-                            <div ng-message="md-maxlength">The Search Query has to be less than 250 characters long.</div>
-                        </div>
-                   </md-input-container>
-                   <md-button class="md-raised md-primary" ng-click="getSearchResults(searchQuery)">Search</md-button>
+                    <md-input-container class="md-block" id="searchBox">
+                        <label>Text Box - Type or Paste your article here.</label>
+                        <textarea ng-model="searchQuery" rows="25" md-select-on-focus></textarea>
+                    </md-input-container>
+                    <md-button class="md-raised md-primary" ng-click="getSearchResults(searchQuery)">Find Topics's</md-button>
                 </form>
             </section>
         </md-content>
     </div>
 </div>
 <div flex>
-    <!-- Dynamic Tabbed result display. To be shown only when  -->
-    <p style="width: 100%; text-align: center; font-size: 1.6em; " ng-show="isBeginingScreen()">
-        Enter a query above ...
+    <p style="width: 100%; text-align: left; font-size: 1.2em; " ng-show="isBeginingScreen()" >
         <md-list >
-            This Search Engine is a technology demonstrator:
+            Topic finder demo:
             <md-list-item>
-                It demonstrates an implementation of a Custom Search Engine developed using Apache Lucene.
+                <b>It demonstrates an implementation of a Text analysis using RAKE, Scikit with Serindio's improvements.</b>
             </md-list-item>
             <md-list-item>
-                This REST Service can be used to index any web pages or any unstructured text documents in internal repositories.
+                We provide REST Service that can be used to find topics unstructured text data.
             </md-list-item>
             <md-list-item>
-                If there is a public website we can enable Custom Search using Google Search API.
-            </md-list-item>
-            <md-list-item>
-                The Current demo demonstrates Search from walmart.com and target.com .
-            </md-list-item>
-            <md-list-item>
-                Also for general Web Search We have a demo using Bing Search API.
-            </md-list-item>
-            <md-list-item>
-                All the Search Services can be easily integrated with any applications through REST API.
+                Details are available &nbsp;<a href="https://github.com/serendio-labs/diskoveror-ta" target="_blank">here</a> .
             </md-list-item>
         </md-list>
     </p>
     <p style="width: 100%; text-align: center; font-size: 1.6em; " ng-show="isQueryProcessing()">
         Please Wait ... Result are on its way ....
     </p>
-    <md-content flex id="contentTabs" ng-show="isResultAvailable()">
-        <md-tabs md-dynamic-height=""
-                 md-stretch-tabs="always"
-                 md-selected="tabIndex">
-            <md-tab label="Search with Google API">
-                <p>Top 10 from about {{googleSearchResults.searchInformation.formattedTotalResults}} results ( {{googleSearchResults.searchInformation.formattedSearchTime}} Seconds)</p>
-                <md-list>
-                    <md-list-item ng-repeat="item in googleSearchResults.items" class="noright">
-                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch style="width: 100%;">
-                            <md-card-title >
-                                <md-card-title-media>
-                                    <div class="md-media-md card-media">
-                                        <img alt="{{item.title}}" ng-src="{{item.pagemap.cse_thumbnail[0].src}}" class="md-avatar" />
-                                    </div>
-                                </md-card-title-media>
-                                <md-card-title-text>
-                                    <span class="md-headline"><a href="{{item.link}}" target="_blank">{{item.title}}</a></span>
-                                    <span class="md-subhead">{{item.snippet}}</span>
-                                </md-card-title-text>
-                            </md-card-title>
-                        </md-card>
-                    </md-list-item>
-                </md-list>
-            </md-tab>
-            <md-tab label="Search with Apache Lucene" style="font-size: 1.3em;font-weight: bold;">
-                <p>Top 50 from about {{searchQuerySearchResults.resultCount}} results ( {{searchQuerySearchResults.executionTime/1000}} Seconds)</p>
-                <md-list>
-                    <md-list-item ng-repeat="item in searchQuerySearchResults.results" class="noright">
-                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch style="width: 100%;">
-                            <md-card-title >
-                                <md-card-title-media>
-                                    <div class="md-media-md card-media">
-                                        <img alt="{{item.title}}" ng-src="{{item.imageUrl}}" class="md-avatar"  />
-                                    </div>
-                                </md-card-title-media>
-                                <md-card-title-text>
-                                    <span class="md-headline"><a href="{{item.url}}" target="_blank">{{item.title}}</a></span>
-                                    <span class="md-subhead">{{item.description}}</span>
-                                </md-card-title-text>
-                            </md-card-title>
-                        </md-card>
-                    </md-list-item>
-                </md-list>
-            </md-tab>
-            <md-tab label="Search with Bing API">
-                <p>Top 50 results</p>
-                <md-list>
-                    <md-list-item ng-repeat="item in bingSearchResults.d.results" class="noright">
-                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch style="width: 100%;">
-                            <md-card-title >
-                                <md-card-title-media>
-                                    <div class="md-media-md card-media">
-                                        <img alt="{{item.Title}}" ng-src="{{item.pagemap.cse_thumbnail[0].src}}" class="md-avatar"  />
-                                    </div>
-                                </md-card-title-media>
-                                <md-card-title-text>
-                                    <span class="md-headline"><a href="{{item.Url}}" target="_blank">{{item.Title}}</a></span>
-                                    <span class="md-subhead">{{item.Description}}</span>
-                                </md-card-title-text>
-                            </md-card-title>
-                        </md-card>
-                    </md-list-item>
-                </md-list>
-            </md-tab>
-        </md-tabs>
-    </md-content>
+    <div layout="row" ng-show="isResultAvailable()" >
+        <div flex="25">
+            <sd-block-list-display dataobj="dataobj" ng-repeat="dataobj in topicBlocks" ng-if="displayBlock(dataobj.contents)"/>
+        </div>
+        <div flex>
+            <md-content flex id="topiccFormatedOutput">
+                <p ng-bind-html="formatedResult"></p>
+            </md-content>
+        </div>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="resetPage()" ng-show="isResultAvailable()">Back</md-button>
 </div>
 
 

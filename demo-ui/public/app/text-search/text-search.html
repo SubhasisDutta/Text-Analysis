@@ -1,20 +1,21 @@
 <div flex layout="row">
-    <div flex="5" >
+    <div flex="5">
         &nbsp;
     </div>
     <div flex>
         <md-content layout-padding>
             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                 <form name="searchForm" ng-submit="getSearchResults(searchQuery)">
-                   <md-input-container class="md-block" id="searchBox" >
+                    <md-input-container class="md-block" id="searchBox">
                         <label>Search Query ... </label>
                         <input md-maxlength="250" required md-no-asterisk name="description" ng-model="searchQuery">
                         <div ng-messages="projectForm.description.$error">
                             <div ng-message="required">This is required.</div>
-                            <div ng-message="md-maxlength">The Search Query has to be less than 250 characters long.</div>
+                            <div ng-message="md-maxlength">The Search Query has to be less than 250 characters long.
+                            </div>
                         </div>
-                   </md-input-container>
-                   <md-button class="md-raised md-primary" ng-click="getSearchResults(searchQuery)">Search</md-button>
+                    </md-input-container>
+                    <md-button class="md-raised md-primary" ng-click="getSearchResults(searchQuery)">Search</md-button>
                 </form>
             </section>
         </md-content>
@@ -23,9 +24,8 @@
 <div flex>
     <!-- Dynamic Tabbed result display. To be shown only when  -->
     <p style="width: 100%; text-align: left; font-size: 1.2em;" ng-show="isBeginingScreen()">
-        Enter a query above ...
-        <md-list >
-            This Search Engine:
+        <md-list>
+            Unstructured Text Search Demo:
             <md-list-item>
                 Demonstrates a Custom Search Engine developed using Apache Lucene.
             </md-list-item>
@@ -54,14 +54,17 @@
                  md-stretch-tabs="always"
                  md-selected="tabIndex">
             <md-tab label="Search with Google API">
-                <p>Top 10 from about {{googleSearchResults.searchInformation.formattedTotalResults}} results ( {{googleSearchResults.searchInformation.formattedSearchTime}} Seconds)</p>
+                <p>Top 10 from about {{googleSearchResults.searchInformation.formattedTotalResults}} results (
+                    {{googleSearchResults.searchInformation.formattedSearchTime}} Seconds)</p>
                 <md-list>
                     <md-list-item ng-repeat="item in googleSearchResults.items" class="noright">
-                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch style="width: 100%;">
-                            <md-card-title >
+                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch
+                                 style="width: 100%;">
+                            <md-card-title>
                                 <md-card-title-media>
                                     <div class="md-media-md card-media">
-                                        <img alt="{{item.title}}" ng-src="{{item.pagemap.cse_thumbnail[0].src}}" class="md-avatar" />
+                                        <img alt="{{item.title}}" ng-src="{{item.pagemap.cse_thumbnail[0].src}}"
+                                             class="md-avatar"/>
                                     </div>
                                 </md-card-title-media>
                                 <md-card-title-text>
@@ -74,34 +77,42 @@
                 </md-list>
             </md-tab>
             <md-tab label="Search with Apache Lucene" style="font-size: 1.3em;font-weight: bold;">
-                <p>Top 50 from about {{searchQuerySearchResults.resultCount}} results ( {{searchQuerySearchResults.executionTime/1000}} Seconds)</p>
-                <md-list>
-                    <md-list-item ng-repeat="item in searchQuerySearchResults.results" class="noright">
-                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch style="width: 100%;">
-                            <md-card-title >
-                                <md-card-title-media>
-                                    <div class="md-media-md card-media">
-                                        <img alt="{{item.title}}" ng-src="{{item.imageUrl}}" class="md-avatar"  />
-                                    </div>
-                                </md-card-title-media>
-                                <md-card-title-text>
-                                    <span class="md-headline"><a href="{{item.url}}" target="_blank">{{item.title}}</a></span>
-                                    <span class="md-subhead">{{item.description}}</span>
-                                </md-card-title-text>
-                            </md-card-title>
-                        </md-card>
-                    </md-list-item>
-                </md-list>
+                <h3 ng-show="noresultsFound"> No Results available in the current index matching the query.</h3>
+                <div ng-hide="noresultsFound">
+                    <p>Top 50 from about {{searchQuerySearchResults.resultCount}} results (
+                        {{searchQuerySearchResults.executionTime/1000}} Seconds)</p>
+                    <md-list>
+                        <md-list-item ng-repeat="item in searchQuerySearchResults.results" class="noright">
+                            <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch
+                                     style="width: 100%;">
+                                <md-card-title>
+                                    <md-card-title-media>
+                                        <div class="md-media-md card-media">
+                                            <img alt="{{item.title}}" ng-src="{{item.imageUrl}}" class="md-avatar"/>
+                                        </div>
+                                    </md-card-title-media>
+                                    <md-card-title-text>
+                                        <span class="md-headline"><a href="{{item.url}}"
+                                                                     target="_blank">{{item.title}}</a></span>
+                                        <span class="md-subhead">{{item.description}}</span>
+                                    </md-card-title-text>
+                                </md-card-title>
+                            </md-card>
+                        </md-list-item>
+                    </md-list>
+                </div>
             </md-tab>
             <md-tab label="Search with Bing API">
                 <p>Top 50 results</p>
                 <md-list>
                     <md-list-item ng-repeat="item in bingSearchResults.d.results" class="noright">
-                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch style="width: 100%;">
-                            <md-card-title >
+                        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch
+                                 style="width: 100%;">
+                            <md-card-title>
                                 <md-card-title-media>
                                     <div class="md-media-md card-media">
-                                        <img alt="{{item.Title}}" ng-src="{{item.pagemap.cse_thumbnail[0].src}}" class="md-avatar"  />
+                                        <img alt="{{item.Title}}" ng-src="{{item.pagemap.cse_thumbnail[0].src}}"
+                                             class="md-avatar"/>
                                     </div>
                                 </md-card-title-media>
                                 <md-card-title-text>

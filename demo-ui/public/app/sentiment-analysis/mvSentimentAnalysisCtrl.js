@@ -1,68 +1,88 @@
 /**
  * Created by Subhasis on 5/31/2016.
  */
-angular.module('app').controller('mvSentimentAnalysisCtrl', function($scope,$resource) {
-    $scope.searchQuery ="";
-    $scope.queryAvailableFlag=false;
+angular.module('app').controller('mvSentimentAnalysisCtrl', function ($scope, $resource,$sce) {
+    $scope.searchQuery = "";
+    $scope.queryAvailableFlag = false;
     $scope.resultAvailable = false;
     $scope.tabIndex = 0;
+    var availableSentimentLevel = $resource("/api/sentiment-level").get();
 
-    $scope.getSearchResults = function(searchQuery){
+    function getColor(score){
+        for(var i in availableSentimentLevel.types){
+            var o = availableSentimentLevel.types[i];
+            if(o.score === score){
+                return o.color;
+            }
+        }
+        return "#FFF";
+    }
+    $scope.getSearchResults = function (searchQuery) {
         //console.log(searchQuery);
-        $scope.queryAvailableFlag=false;
+
+
+        $scope.queryAvailableFlag = false;
         $scope.resultAvailable = false;
-        if(searchQuery.trim() === ""){
+        if (searchQuery.trim() === "") {
             $scope.queryAvailableFlag = false;
             $scope.resultAvailable = false;
-        }else{
+        } else {
             $scope.queryAvailableFlag = true;
         }
         //Go get the reusults if any one gives result make it available
-        if($scope.queryAvailableFlag){
-            var googleSearchResource = $resource("/api/googlesearch/:query");
-            $scope.googleSearchResults = googleSearchResource.get({query:searchQuery},function(){
+        if ($scope.queryAvailableFlag) {
+            var sentimentResource = $resource("/api/find-sentiments");
+            $scope.sentimentBlocks = [];
+
+            sentimentResource.save({text: searchQuery}, function (response) {
+                var text = searchQuery;
+                for(var i in availableSentimentLevel.types){
+                    var level = availableSentimentLevel.types[i];
+                    var obj = {
+                        displayName: level.level,
+                        contents: [" "],
+                        bgColor: level.color
+                    };
+                    $scope.sentimentBlocks.push(obj);
+                }
+
+                for(var i in response.result){
+                    var sentence = response.result[i].sentence;
+                    var score = response.result[i].score;
+                    if(score !==0){
+                        text = text.replace(sentence, "<span style='background-color: " + getColor(score) + "'>" + sentence + "</span>");
+                    }
+                }
+
+                $scope.formatedResult = $sce.trustAsHtml(text);
                 $scope.resultAvailable = true;
-                //console.log($scope.googleSearchResults);
-                //console.log($scope.googleSearchResults.items[0]);
             });
 
-            var bingSearchResource = $resource("/api/bingsearch/:query");
-            $scope.bingSearchResults = bingSearchResource.get({query:searchQuery},function(){
-                $scope.resultAvailable = true;
-                //console.log($scope.bingSearchResults.d.results[0]);
-                //console.log($scope.googleSearchResults.items[0]);
-            });
-
-            var searchQueryResource = $resource("/api/search/:query");
-            $scope.searchQuerySearchResults = searchQueryResource.get({query:searchQuery},function(){
-                $scope.resultAvailable = true;
-                console.log($scope.searchQuerySearchResults);
-            });
-            /*var searchQueryExpansionResource = $resource("/api/queryexpansion/:query");
-             $scope.searchQueryExpansionSearchResults = searchQueryExpansionResource.get({query:searchQuery},function(){
-             $scope.resultAvailable = true;
-             console.log($scope.searchQueryExpansionSearchResults);
-             });
-             var searchClusterResource = $resource("/api/clustering/:query");
-             $scope.searchClusterSearchResults = searchClusterResource.get({query:searchQuery},function(){
-             $scope.resultAvailable = true;
-             console.log($scope.searchClusterSearchResults);
-             });*/
         }
     };
-    $scope.isBeginingScreen = function(){
-        if($scope.queryAvailableFlag === false && $scope.resultAvailable === false){
+    $scope.isBeginingScreen = function () {
+        if ($scope.queryAvailableFlag === false && $scope.resultAvailable === false) {
             return true;
         }
         return false;
     };
-    $scope.isQueryProcessing = function(){
-        if($scope.queryAvailableFlag === true && $scope.resultAvailable === false){
+    $scope.isQueryProcessing = function () {
+        if ($scope.queryAvailableFlag === true && $scope.resultAvailable === false) {
             return true;
         }
         return false;
     };
-    $scope.isResultAvailable = function(){
+    $scope.isResultAvailable = function () {
         return $scope.queryAvailableFlag && $scope.resultAvailable;
     };
+    $scope.resetPage = function () {
+        $scope.queryAvailableFlag = false;
+        $scope.resultAvailable = false;
+    };
+
+    $scope.displayBlock = function (arr) {
+        if (arr.length > 0)
+            return true;
+        return false;
+    }
 });

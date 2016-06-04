@@ -1,8 +1,8 @@
 <div flex layout="row">
-    <div flex="5" >
+    <div flex="5">
         &nbsp;
     </div>
-    <div flex>
+    <div flex style="font-size: 0.8em;">
         <md-content layout-padding ng-hide="isResultAvailable()">
             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                 <form name="searchForm" ng-submit="getSearchResults(searchQuery)">
@@ -10,31 +10,37 @@
                         <label>Text Box - Type or Paste your article here.</label>
                         <textarea ng-model="searchQuery" rows="25" md-select-on-focus></textarea>
                     </md-input-container>
-                   <md-button class="md-raised md-primary" ng-click="getSearchResults(searchQuery)">Find Entity's</md-button>
+                    <md-button class="md-raised md-primary" ng-click="getSearchResults(searchQuery)">Find Entity's
+                    </md-button>
                 </form>
             </section>
         </md-content>
     </div>
 </div>
 <div flex>
-    <!-- Dynamic Tabbed result display. To be shown only when  -->
-    <p style="width: 100%; text-align: left; font-size: 1.2em; " ng-show="isBeginingScreen()" >
-        <md-list >
-           Entiy extraction demo:
+    <p style="width: 100%; text-align: left; font-size: 1.2em; " ng-show="isBeginingScreen()">
+        <md-list>
+            Entiy extraction demo:
             <md-list-item>
-                It demonstrates an implementation of a Text analysis using Stanford NLP wrapped with Serindio's improvements.
+                <b>It demonstrates an implementation of a Text analysis using Stanford NLP wrapped with Serindio's
+                    improvements.</b>
             </md-list-item>
             <md-list-item>
                 We provide REST Service that can be used to extract different entities from unstructured text data.
+            </md-list-item>
+            <md-list-item>
+                Details are available &nbsp;<a href="https://github.com/serendio-labs/diskoveror-ta" target="_blank">here</a>
+                .
             </md-list-item>
         </md-list>
     </p>
     <p style="width: 100%; text-align: center; font-size: 1.6em; " ng-show="isQueryProcessing()">
         Please Wait ... Result are on its way ....
     </p>
-    <div layout="row" ng-show="isResultAvailable()" >
+    <div layout="row" ng-show="isResultAvailable()">
         <div flex="25">
-            <sd-block-list-display dataobj="dataobj" ng-repeat="dataobj in entityBlocks" ng-if="displayBlock(dataobj.contents)"/>
+            <sd-block-list-display dataobj="dataobj" ng-repeat="dataobj in entityBlocks"
+                                   ng-if="displayBlock(dataobj.contents)"/>
         </div>
         <div flex>
             <md-content flex id="entityFormatedOutput">

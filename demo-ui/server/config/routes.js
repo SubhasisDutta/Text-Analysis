@@ -12,6 +12,9 @@ module.exports = function(app,config) {
   app.get('/api/queryexpansion/:query',search_query.getExpansionSearchResults);
   app.get('/api/clustering/:query',search_query.getClusterSearchResults);
   app.post('/api/find-entity',ta_control.getEntityResults);
+  app.post('/api/find-topics',ta_control.getTopicResults);
+  app.post('/api/find-sentiments',ta_control.getSentimentResults);
+  app.get('/api/sentiment-level',ta_control.getSentimentLevel);
 
   app.get('/partials/*', function(req, res) {
     res.render('../../public/app/' + req.params[0]);

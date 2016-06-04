@@ -7,6 +7,8 @@ angular.module('app').controller('mvTextSearchCtrl', function($scope,$resource) 
     $scope.resultAvailable = false;
     $scope.tabIndex = 0;
 
+    $scope.noresultsFound = false;
+
     $scope.getSearchResults = function(searchQuery){
         //console.log(searchQuery);
         $scope.queryAvailableFlag=false;
@@ -21,14 +23,14 @@ angular.module('app').controller('mvTextSearchCtrl', function($scope,$resource) 
         if($scope.queryAvailableFlag){
             var googleSearchResource = $resource("/api/googlesearch/:query");
             $scope.googleSearchResults = googleSearchResource.get({query:searchQuery},function(){
-                $scope.resultAvailable = true;
+                //$scope.resultAvailable = true;
                 //console.log($scope.googleSearchResults);
                 //console.log($scope.googleSearchResults.items[0]);
             });
 
             var bingSearchResource = $resource("/api/bingsearch/:query");
             $scope.bingSearchResults = bingSearchResource.get({query:searchQuery},function(){
-                $scope.resultAvailable = true;
+                //$scope.resultAvailable = true;
                 //console.log($scope.bingSearchResults.d.results[0]);
                 //console.log($scope.googleSearchResults.items[0]);
             });
@@ -36,7 +38,13 @@ angular.module('app').controller('mvTextSearchCtrl', function($scope,$resource) 
             var searchQueryResource = $resource("/api/search/:query");
             $scope.searchQuerySearchResults = searchQueryResource.get({query:searchQuery},function(){
                 $scope.resultAvailable = true;
-                console.log($scope.searchQuerySearchResults);
+
+                if(searchQuerySearchResults.resultCount === 0 || searchQuerySearchResults.resultCount === undefined){
+                    $scope.noresultsFound = true;
+                }else{
+                    $scope.noresultsFound = false;
+                }
+                //console.log($scope.searchQuerySearchResults);
             });
             /*var searchQueryExpansionResource = $resource("/api/queryexpansion/:query");
              $scope.searchQueryExpansionSearchResults = searchQueryExpansionResource.get({query:searchQuery},function(){
@@ -65,4 +73,5 @@ angular.module('app').controller('mvTextSearchCtrl', function($scope,$resource) 
     $scope.isResultAvailable = function(){
         return $scope.queryAvailableFlag && $scope.resultAvailable;
     };
+
 });
