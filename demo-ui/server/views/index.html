@@ -22,13 +22,129 @@
 </head>
 <body ng-app="app" ng-cloak layout="row" ng-controller="mvMainCtrl">
    <!--To See how to have a Sidenav -->
-   <div ng-include="'/partials/main/sidenav.html'" layout="vertical"></div>
+   <!--<div ng-include="'/partials/main/sidenav.html'" layout="vertical"></div>-->
    <div layout="column" flex>
        <div ng-include="'/partials/main/toolbar-header'"></div>
+           <md-content flex id="contentTabs">
+               <md-tabs md-dynamic-height=""
+                        md-stretch-tabs="always"
+                        md-selected="tabIndex">
+                   <md-tab label="Architecture">
+                <md-content style="padding: 20px;">
+                       <h1>Overview</h1>
 
-       <div flex>
-           <md-content  flex id="content">
-               <div ng-view></div>
+                       <p>DisKoveror is a Text Analytics framework developed by Serendio. Built on top of other open source packages, it provides a flexible and extensible way to extract Entities, Topics, Categories, Sentiments, and Keywords from unstructured text regardless of its source. The key advantage of DisKoveror over the numerous open source options is it provides access to the best-of-breed components through a plug and play approach and a unified programming interface.  DisKoveror has also improved the output quality, in some cases, through Training sets, domain specific ontology, and folksonomy. </p>
+
+                       <p>DisKoveror has been used to mine brand sentiments from social media, understand customer satisfaction from emails, extract topics from Tweets, compute social influence score, auto-categorize legal documents and much more. </p>
+
+                       <p>DisKoveror can be accessed through <a href="https://github.com/serendio-labs/diskoveror-ta/wiki/Command-Line-API">Command Line API</a>, <a href="https://github.com/serendio-labs/diskoveror-ta/wiki/JAVA-API">Java API</a> or a <a href="https://github.com/serendio-labs/diskoveror-ta/wiki/REST-API">RESTful interface</a>.</p>
+
+                       <p>License: Apache 2.0</p>
+
+                       <h2>Key Functionalities</h2>
+
+                       <ul>
+                           <li> <a href="https://github.com/serendio-labs/diskoveror-ta/wiki/Sentiment-Extraction">Sentiment analysis</a></li>
+                           <li> <a href="https://github.com/serendio-labs/diskoveror-ta/wiki/Topic-Detection">Topic detection</a></li>
+                           <li> <a href="https://github.com/serendio-labs/diskoveror-ta/wiki/Name-Entity-Extraction">Named Entity Extraction</a></li>
+                           <li> <a href="https://github.com/serendio-labs/diskoveror-ta/wiki/Keywords-Extraction">Keywords Extraction</a></li>
+                       </ul>
+
+                       <h3>System Architecture</h3>
+
+                       <p>The architecture of the system is as given below.</p>
+
+                       <p><a href="/asset/Diskoveror_architecture.png" target="_blank"><img src="/asset/Diskoveror_architecture.png" alt="System Architecture" title="System Architecture" style="max-width:100%;"></a></p>
+
+                       <p>DisKoveror supports Java APIs and a RESTful interface.</p>
+
+                       <h5>DisKoveror leverages the open source modules shown below:</h5>
+
+                       <h6>Name Entity extraction</h6>
+
+                       <ul>
+                           <li><a href="http://nlp.stanford.edu/software/corenlp.shtml">Stanford CoreNLP</a></li>
+                           <li><a href="https://opennlp.apache.org/">Apache OpenNLP</a></li>
+                           <li><a href="http://code.google.com/p/duke/">DUKE</a></li>
+                       </ul>
+
+                       <h6>Sentiment extraction</h6>
+
+                       <ul>
+                           <li><a href="http://www.ark.cs.cmu.edu/TweetNLP/">Twokenize</a></li>
+                           <li><a href="http://scikit-learn.org/stable/">Scikit-Learn</a></li>
+                           <li><a href="https://github.com/aneesha/RAKE">RAKE</a></li>
+                       </ul>
+
+                       <h6>Topic extraction</h6>
+
+                       <ul>
+                           <li><a href="https://code.google.com/p/word2vec/">WORD2VEC</a></li>
+                           <li><a href="http://scikit-learn.org/stable/">Scikit-Learn</a></li>
+                           <li><a href="http://rake.rubyforge.org/">RAKE</a></li>
+                           <li><a href="https://radimrehurek.com/gensim/">Gensim</a></li>
+                       </ul>
+
+                       <h6>Keyword extraction</h6>
+
+                       <ul>
+                           <li><a href="http://rake.rubyforge.org/">RAKE</a></li>
+                       </ul>
+
+                       <h3>Getting Started</h3>
+
+                       <h5>Software Requirements</h5>
+
+                       <ul>
+                           <li>JDK (Version 7 or above)</li>
+                           <li>Maven (Apache Maven 3.0.5 or above)</li>
+                           <li>Thrift server (Apache Thrift 0.9.2)</li>
+                           <li>Python (version 2.7.X)</li>
+                           <li>Pip (version 7.1.X)</li>
+                       </ul>
+
+                       <h5>Workspace to Download</h5>
+
+                       <p><a href="https://github.com/serendio-labs/diskoveror-ta/archive/master.zip">DisKoveror-ta</a> </p>
+
+
+                       <p>The requirements.txt file specifies the software packages along with their versions to be installed. Execute the
+                           below command to install all python related dependencies for the Sentiment and Topics.</p>
+
+                       <blockquote>
+<pre><code>/diskoveror-ta/src/main/python$ sudo pip install -r requirements.txt
+</code></pre>
+                       </blockquote>
+
+
+                       <h5>Compiling DisKoveror TA Engine</h5>
+
+                       <p>To package it in a single executable jar for distribution (.jar file), the following command has to be run from the command line.</p>
+
+                       <blockquote>
+<pre><code> /diskoveror-ta$ mvn package dependency:copy-dependencies clean
+</code></pre>
+                       </blockquote>
+
+                       <h5>The diskoveror-ta package could be utilized by any of the below provided methods</h5>
+
+                       <ul>
+                           <li><a href="https://github.com/serendio-labs/diskoveror-ta/wiki/JAVA-API">JAVA API</a></li>
+                           <li><a href="https://github.com/serendio-labs/diskoveror-ta/wiki/Command-Line-API">Command Line API</a></li>
+                           <li><a href="https://github.com/serendio-labs/diskoveror-ta/wiki/REST-API">RESTful interface</a></li>
+                       </ul>
+                     </md-content>
+                   </md-tab>
+                   <md-tab label="Demo">
+                       <div layout="row">
+                           <div ng-include="'/partials/main/sidenav.html'" layout="vertical" id="demoSidenav"></div>
+                           <md-content  flex id="content">
+                               <div ng-view></div>
+                           </md-content>
+                       </div>
+
+                   </md-tab>
+               </md-tabs>
            </md-content>
        </div>
    </div>

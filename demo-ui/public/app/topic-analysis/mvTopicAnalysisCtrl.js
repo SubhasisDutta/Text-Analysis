@@ -29,18 +29,20 @@ angular.module('app').controller('mvTopicAnalysisCtrl', function($scope,$resourc
             var response = topicResource.save({text:searchQuery},function(){
                 var text = response.result.text;
                 var keywords = [];
+                var topics =[];
                 for(var i in response.result.keywords){
                     keywords.push(response.result.keywords[i]);
+                    topics.push(response.result.keywords[i]);
                 }
                 keywords =uniqueStrings(keywords)
                     .sort(function(a, b) {return b.length - a.length;});
-                var obj = {
+                /*var obj = {
                     displayName : "Keywords",
                     contents : keywords,
                     bgColor : "#03A9F4"
                 };
-                $scope.topicBlocks.push(obj);
-                var topics =[]
+                $scope.topicBlocks.push(obj);*/
+
                 for(var i in response.result.topics){
                     topics.push(response.result.topics[i]);
                 }

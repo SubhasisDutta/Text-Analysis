@@ -23,19 +23,18 @@ angular.module('app').controller('mvTextSearchCtrl', function($scope,$resource) 
         if($scope.queryAvailableFlag){
             var googleSearchResource = $resource("/api/googlesearch/:query");
             $scope.googleSearchResults = googleSearchResource.get({query:searchQuery},function(){
-                //$scope.resultAvailable = true;
-                //console.log($scope.googleSearchResults);
+                $scope.resultAvailable = true;
                 //console.log($scope.googleSearchResults.items[0]);
             });
 
             var bingSearchResource = $resource("/api/bingsearch/:query");
             $scope.bingSearchResults = bingSearchResource.get({query:searchQuery},function(){
-                //$scope.resultAvailable = true;
+                $scope.resultAvailable = true;
                 //console.log($scope.bingSearchResults.d.results[0]);
                 //console.log($scope.googleSearchResults.items[0]);
             });
 
-            var searchQueryResource = $resource("/api/search/:query");
+            /*var searchQueryResource = $resource("/api/search/:query");
             $scope.searchQuerySearchResults = searchQueryResource.get({query:searchQuery},function(){
                 $scope.resultAvailable = true;
 
@@ -45,7 +44,7 @@ angular.module('app').controller('mvTextSearchCtrl', function($scope,$resource) 
                     $scope.noresultsFound = false;
                 }
                 //console.log($scope.searchQuerySearchResults);
-            });
+            });*/
             /*var searchQueryExpansionResource = $resource("/api/queryexpansion/:query");
              $scope.searchQueryExpansionSearchResults = searchQueryExpansionResource.get({query:searchQuery},function(){
              $scope.resultAvailable = true;

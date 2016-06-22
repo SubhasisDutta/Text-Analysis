@@ -6,11 +6,12 @@
         <md-content layout-padding ng-hide="isResultAvailable()">
             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                 <form name="searchForm" ng-submit="getSearchResults(searchQuery)">
-                    <md-input-container class="md-block" id="searchBox">
-                        <label>Text Box - Type or Paste your article here.</label>
-                        <textarea ng-model="searchQuery" rows="25" md-select-on-focus></textarea>
+                    <md-input-container id="searchBox">
+                        <label style="font-size: x-large;color:rgb(255,82,82);">Type or Paste your article here.</label>
+                        <textarea ng-model="searchQuery" rows="25" md-select-on-focus
+                                  style="height: 300px;!important;border-color: rgb(255,82,82);"></textarea>
                     </md-input-container>
-                    <md-button class="md-raised md-primary" ng-click="getSearchResults(searchQuery)">Find Topics's</md-button>
+                    <md-button class="md-raised md-primary" ng-click="getSearchResults(searchQuery)">SUBMIT</md-button>
                 </form>
             </section>
         </md-content>
@@ -18,18 +19,7 @@
 </div>
 <div flex>
     <p style="width: 100%; text-align: left; font-size: 1.2em; " ng-show="isBeginingScreen()" >
-        <md-list >
-            Topic finder demo:
-            <md-list-item>
-                <b>It demonstrates an implementation of a Text analysis using RAKE, Scikit with Serindio's improvements.</b>
-            </md-list-item>
-            <md-list-item>
-                We provide REST Service that can be used to find topics unstructured text data.
-            </md-list-item>
-            <md-list-item>
-                Details are available &nbsp;<a href="https://github.com/serendio-labs/diskoveror-ta" target="_blank">here</a> .
-            </md-list-item>
-        </md-list>
+        &nbsp;
     </p>
     <p style="width: 100%; text-align: center; font-size: 1.6em; " ng-show="isQueryProcessing()">
         Please Wait ... Result are on its way ....

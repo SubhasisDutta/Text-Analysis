@@ -7,8 +7,9 @@
             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                 <form name="searchForm" ng-submit="getSearchResults(searchQuery)">
                     <md-input-container class="md-block" id="searchBox">
-                        <label>Search Query ... </label>
-                        <input md-maxlength="250" required md-no-asterisk name="description" ng-model="searchQuery">
+                        <label style="font-size: x-large;color:rgb(255,82,82);">Search Query ... </label>
+                        <input md-maxlength="250" required md-no-asterisk name="description" ng-model="searchQuery"
+                               style="border-color: rgb(255,82,82);">
                         <div ng-messages="projectForm.description.$error">
                             <div ng-message="required">This is required.</div>
                             <div ng-message="md-maxlength">The Search Query has to be less than 250 characters long.
@@ -25,13 +26,6 @@
     <!-- Dynamic Tabbed result display. To be shown only when  -->
     <p style="width: 100%; text-align: left; font-size: 1.2em;" ng-show="isBeginingScreen()">
         <md-list>
-            Unstructured Text Search Demo:
-            <md-list-item>
-                Demonstrates a Custom Search Engine developed using Apache Lucene.
-            </md-list-item>
-            <md-list-item>
-                <b>It can be used to index any unstructured text documents in internal repositories.</b>
-            </md-list-item>
             <md-list-item>
                 The Current demo demonstrates Search from walmart.com and target.com .
             </md-list-item>
@@ -75,32 +69,6 @@
                         </md-card>
                     </md-list-item>
                 </md-list>
-            </md-tab>
-            <md-tab label="Search with Apache Lucene" style="font-size: 1.3em;font-weight: bold;">
-                <h3 ng-show="noresultsFound"> No Results available in the current index matching the query.</h3>
-                <div ng-hide="noresultsFound">
-                    <p>Top 50 from about {{searchQuerySearchResults.resultCount}} results (
-                        {{searchQuerySearchResults.executionTime/1000}} Seconds)</p>
-                    <md-list>
-                        <md-list-item ng-repeat="item in searchQuerySearchResults.results" class="noright">
-                            <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch
-                                     style="width: 100%;">
-                                <md-card-title>
-                                    <md-card-title-media>
-                                        <div class="md-media-md card-media">
-                                            <img alt="{{item.title}}" ng-src="{{item.imageUrl}}" class="md-avatar"/>
-                                        </div>
-                                    </md-card-title-media>
-                                    <md-card-title-text>
-                                        <span class="md-headline"><a href="{{item.url}}"
-                                                                     target="_blank">{{item.title}}</a></span>
-                                        <span class="md-subhead">{{item.description}}</span>
-                                    </md-card-title-text>
-                                </md-card-title>
-                            </md-card>
-                        </md-list-item>
-                    </md-list>
-                </div>
             </md-tab>
             <md-tab label="Search with Bing API">
                 <p>Top 50 results</p>

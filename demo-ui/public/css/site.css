@@ -151,3 +151,6 @@ span.name {
 .reduceToolBar {
   height: 30px;
 }
+#demoSidenav .selected {
+  background-color: #ff5252;
+}

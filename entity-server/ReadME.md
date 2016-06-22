@@ -19,3 +19,4 @@ java -cp .\Rest_API_Search_Server-jar-with-dependencies.jar com.irsearch.commerc
 
 nohup java -cp .\Rest_API_Search_Server-jar-with-dependencies.jar com.irsearch.commercesearch.Main config.properties &
 
+nohup java -cp Rest_API_Entity_Server-jar-with-dependencies.jar com.serendio.textanalyzer.Main &

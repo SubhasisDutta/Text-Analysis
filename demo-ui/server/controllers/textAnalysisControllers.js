@@ -7,8 +7,6 @@ var request = require('request');
 
 exports.getEntityResults = function(req, res) {
     var query = req.body.text;
-    //console.log(query);
-
     var url = config.entity_server_ws;
     request({
         url: url, //URL to hit
