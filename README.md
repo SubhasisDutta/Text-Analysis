@@ -6,6 +6,10 @@ DisKoveror is a Text Analytics framework developed by Serendio. Built on top of 
 
 App Link : http://demo.serendio.com:3031/
 
+# Blog Post
+
+Link : http://subhasisproject.blogspot.com/2015/07/text-analysis-using-stanford-nlp-and.html
+
 
 DisKoveror has been used to mine brand sentiments from social media, understand customer satisfaction from emails, extract topics from Tweets, compute social influence score, auto-categorize legal documents and much more. 
 
